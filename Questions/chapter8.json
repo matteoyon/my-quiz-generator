@@ -1,0 +1,351 @@
+[
+  {
+    "id": 1,
+    "question": "What is the result of the following class?\n1:\n2:\n3:\n4:\n5:\n6:\n7:\n8:\n9:\nimport java.util.function.*;\npublic class Panda {\nint age;\npublic static void main(String[] args) {\nPanda p1 = new Panda();\np1.age = 1;\ncheck(p1, p -> p.age < 5);\n}10:\nprivate static void check(Panda panda,\n11:\nPredicate<Panda> pred) {\n12:\nString result =\n13:\npred.test(panda) ? \"match\" : \"not match\";\n14:\nSystem.out.print(result);\n15: } }",
+    "options": [
+      "A. match",
+      "B. not match",
+      "C. Compiler error on line 8",
+      "D. Compiler error on lines 10 and 11",
+      "E. Compiler error on lines 12 and 13",
+      "F. A runtime exception"
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "1. A. This code is correct. Line 8 creates a lambda expression that checks whether the age is less than 5, making option A correct. Since there is only one parameter and it does not specify a type, the parentheses around the parameter are optional. Lines 11 and 13 use the Predicate interface, which declares a test() method."
+  },
+  {
+    "id": 2,
+    "question": "What is the result of the following code?\n1: interface Climb {\n2:\n\nboolean isTooHigh(int height, int limit);\n3: }\n4:\n5: public class Climber {\n6: public static void main(String[] args) {\n7: check((h, m) -> h.append(m).isEmpty(), 5);\n8: }\n9: private static void check(Climb climb, int height) {\n10: if (climb.isTooHigh(height, 10))\n11: System.out.println(\"too high\");\n12: else\n13: System.out.println(\"ok\");\n14: }\n15: }",
+    "options": [
+      "A. ok",
+      "B. too high",
+      "C. Compiler error on line 7.",
+      "D. Compiler error on line 10.",
+      "E. Compiler error on a different line.",
+      "F. A runtime exception is thrown."
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "2. C. The interface takes two int parameters. The code on line 7 attempts to use them as if h is a StringBuilder, making option C correct. It is tricky to use types in a lambda when they are implicitly specified. Remember to check the interface for the real type."
+  },
+  {
+    "id": 3,
+    "question": "Which statements about functional interfaces are true?\n(Choose all that apply.)",
+    "options": [
+      "A. A functional interface can contain default and private methods.",
+      "B. A functional interface can be defined as a class or an interface.",
+      "C. Abstract methods with signatures that are contained in public methods of java.lang.Object do not count toward the abstract method count for a functional interface.",
+      "D. A functional interface cannot contain static or private static methods.",
+      "E. A functional interface must be marked with the @FunctionalInterface annotation."
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "3. A, C. A functional interface can contain any number of nonabstract methods, including default, private, static, and private static. For this reason, option A is correct, and option D is incorrect. Option B is incorrect, as classes are never considered functional interfaces. A functional interface contains exactly one abstract method, although methods that have matching signatures as public methods in java.lang.Object do not count toward the single method test. For these reasons, option C is correct. Finally, option E is incorrect. While a functional interface can be marked with the @FunctionalInterface annotation, it is not required."
+  },
+  {
+    "id": 4,
+    "question": "Which lambda can replace the MySecret class to return the same value?\n(Choose all that apply.)\n\ninterface Secret {\nString magic(double d);\n}\nclass MySecret implements Secret {\npublic String magic(double d) {\nreturn \"Poof\";\n} }",
+    "options": [
+      "A. (e) -> \"Poof\"",
+      "B. (e) -> {\"Poof\"}",
+      "C. (e) -> { String e = \"\"; \"Poof\" }",
+      "D. (e) -> { String e = \"\"; return \"Poof\"; }",
+      "E. (e) -> { String e = \"\"; return \"Poof\" }",
+      "F. (e) -> { String f = \"\"; return \"Poof\"; }"
+    ],
+    "answer": [
+      "A",
+      "F"
+    ],
+    "explanation": "4. A, F. Option B is incorrect because it does not use the return keyword. Options C, D, and E are incorrect because the variable e is already in use from the lambda and cannot be redefined. Additionally, option C is missing the return keyword, and option E is missing the semicolon. Therefore, options A and F are correct."
+  },
+  {
+    "id": 5,
+    "question": "Which of the following functional interfaces contain an abstract method that returns a primitive value?\n(Choose all that apply.)",
+    "options": [
+      "A. BooleanSupplier",
+      "B. CharSupplier",
+      "C. DoubleSupplier",
+      "D. FloatSupplier",
+      "E. IntSupplier",
+      "F. StringSupplier"
+    ],
+    "answer": [
+      "A",
+      "C",
+      "E"
+    ],
+    "explanation": "5. A, C, E. Java includes support for primitive suppliers such as BooleanSupplier, DoubleSupplier, and IntSupplier. The others do not exist or do not return primitive values as specified."
+  },
+  {
+    "id": 6,
+    "question": "Which of the following lambda expressions can be passed to a function of Predicate<String> type?\n(Choose all that apply.)",
+    "options": [
+      "A. s -> s.isEmpty()",
+      "B. s --> s.isEmpty()",
+      "C. (String s) -> s.isEmpty()",
+      "D. (String s) --> s.isEmpty()",
+      "E. (StringBuilder s) -> s.isEmpty()",
+      "F. (StringBuilder s) --> s.isEmpty()"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation": "6. A, C. Predicate<String> takes a parameter list of one parameter using the specified type. Options E and F are incorrect because they specify the wrong type. Options B, D, and F are incorrect because they use the wrong syntax for the arrow operator. This leaves us with options A and C as the answers."
+  },
+  {
+    "id": 7,
+    "question": "Which of these statements is true about the following code?\npublic void method() {\n    x((var x) -> {}, (var x, var y) -> false);\n}\npublic void x(Consumer<String> x, BinaryOperator<Boolean> y) {}",
+    "options": [
+      "A. The code does not compile because of one of the variables named x.",
+      "B. The code does not compile because of one of the variables named y.",
+      "C. The code does not compile for another reason.",
+      "D. The code compiles, and the x in each lambda refers to the same type.",
+      "E. The code compiles, and the x in each lambda refers to a different type."
+    ],
+    "answer": [
+      "E"
+    ],
+    "explanation": "7. E. While there appears to have been a variable name shortage when this code was written, it does compile. Lambda variables and method names are allowed to be the same. The x lambda parameter is scoped to within each lambda, so it is allowed to be reused. The type is inferred by the method it calls. The first lambda maps x to a String and the second to a Boolean. Therefore, option E is correct."
+  },
+  {
+    "id": 8,
+    "question": "Which of the following is equivalent to this code?\nUnaryOperator<Integer> u = x -> x * x;",
+    "options": [
+      "A. BiFunction<Integer> f = x -> x*x;",
+      "B. BiFunction<Integer, Integer> f = x -> x*x;",
+      "C. BinaryOperator<Integer, Integer> f = x -> x*x;",
+      "D. Function<Integer> f = x -> x*x;",
+      "E. Function<Integer, Integer> f = x -> x*x;",
+      "F. None of the above"
+    ],
+    "answer": [
+      "E"
+    ],
+    "explanation": "8. E. The question starts with a UnaryOperator<Integer>, which takes one parameter and returns a value of the same type. Therefore, option E is correct, as UnaryOperator extends Function. Notice that other options don’t even compile because they have the wrong number of generic types for the functional interface provided. You should know that a BiFunction<T,U,R> takes three generic arguments, a BinaryOperator<T> takes one generic argument, and a Function<T,R> takes two generic arguments."
+  },
+  {
+    "id": 9,
+    "question": "Which statements are true? (Choose all that apply.)",
+    "options": [
+      "A. The Consumer interface is good for printing out an existing value.",
+      "B. The Supplier interface is good for printing out an existing value.",
+      "C. The IntegerSupplier interface returns an int.",
+      "D. The Predicate interface returns an int.",
+      "E. The Function interface has a method named test().",
+      "F. The Predicate interface has a method named test()."
+    ],
+    "answer": [
+      "A",
+      "F"
+    ],
+    "explanation": "9. A, F. Option A is correct, and option B is incorrect because a Supplier returns a value while a Consumer takes one and acts on it. Option C is tricky. IntSupplier does return an int. However, the option asks about IntegerSupplier, which doesn’t exist. Option D is incorrect because a Predicate returns a boolean. It does have a method named test(), making option F correct. Finally, option E is incorrect because Function has an apply() method."
+  },
+  {
+    "id": 10,
+    "question": "Which of the following can be inserted without causing a compilation error?\n(Choose all that apply.)\npublic void remove(List<Character> chars) {\nchar end = 'z';\nPredicate<Character> predicate = c -> {\nchar start = 'a'; return start <= c && c <= end; };// INSERT LINE HERE\n}",
+    "options": [
+      "A. char start = 'a';",
+      "B. char c = 'x';",
+      "C. chars = null;",
+      "D. end = '1';",
+      "E. None of the above"
+    ],
+    "answer": [
+      "A",
+      "B",
+      "C"
+    ],
+    "explanation": "10. A, B, C. Since the scope of start and c is within the lambda, the variables can be declared or updated after it without issue, making options A, B, and C correct. Option D is incorrect because setting end prevents it from being effectively final."
+  },
+  {
+    "id": 11,
+    "question": "11. How many times is true printed out by this code?\nimport java.util.function.Predicate;\npublic class Fantasy {\n    public static void scary(String animal) {\n        var dino = s -> \"dino\".equals(animal);\n        var dragon = s -> \"dragon\".equals(animal);\n        var combined = dino.or(dragon);\n        System.out.println(combined.test(animal));\n    }\n    public static void main(String[] args) {\n        scary(\"dino\");\n        scary(\"dragon\");\n        scary(\"unicorn\");\n    }\n}\nA. One.\nB. Two.\nC. Three.\nD. The code does not compile.\nE. A runtime exception is thrown.",
+    "options": [
+      "A. One.",
+      "B. Two.",
+      "C. Three.",
+      "D. The code does not compile.",
+      "E. A runtime exception is thrown."
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation": "11. D. The code does not compile because the lambdas are assigned to var. The compiler does not have enough information to determine they are of type Predicate<String>. Therefore, option D is correct."
+  },
+  {
+    "id": 12,
+    "question": "12. What does the following code output?\nFunction<Integer, Integer> s = a -> a + 4;\nFunction<Integer, Integer> t = a -> a * 3;\nFunction<Integer, Integer> c = s.compose(t);\nSystem.out.print(c.apply(1));\nA. 7\nB. 15\nC. The code does not compile because of the data types in the lambda expressions.\nD. The code does not compile because of the compose() call.\nE. The code does not compile for another reason.",
+    "options": [
+      "A. 7",
+      "B. 15",
+      "C. The code does not compile because of the data types in the lambda expressions.",
+      "D. The code does not compile because of the compose() call.",
+      "E. The code does not compile for another reason."
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation": "12. A. The a.compose(b) method calls the Function parameter b before the reference Function variable a. In this case, that means we multiply by 3 before adding 4. This gives a result of 7, making option A correct."
+  },
+  {
+    "id": 13,
+    "question": "13. Which is true of the following code?\nint length = 3;\nfor (int i = 0; i < 3; i++) {\n    if (i % 2 == 0) {\n        Supplier<Integer> supplier = () -> length; // A\n        System.out.println(supplier.get());\n        // B\n    } else {\n        int j = i;\n        Supplier<Integer> supplier = () -> j; // C\n        System.out.println(supplier.get());\n        // D\n    }\n}\nA. The first compiler error is on line A.\nB. The first compiler error is on line B.\nC. The first compiler error is on line C.\nD. The first compiler error is on line D.\nE. The code compiles successfully.",
+    "options": [
+      "A. The first compiler error is on line A.",
+      "B. The first compiler error is on line B.",
+      "C. The first compiler error is on line C.",
+      "D. The first compiler error is on line D.",
+      "E. The code compiles successfully."
+    ],
+    "answer": [
+      "E"
+    ],
+    "explanation": "13. E. Lambdas are only allowed to reference final or effectively final variables. You can tell the variable j is effectively final because adding a final keyword before it wouldn’t introduce a compiler error. Each time the else statement is executed, the variable is redeclared and goes out of scope. Therefore, it is not reassigned. Similarly, length is effectively final. There are no compiler errors, and option E is correct."
+  },
+  {
+    "id": 14,
+    "question": "14. Which of the following are valid lambda expressions? (Choose all that apply.)\nA. (Wolf w, var c) -> 39\nB. (final Camel c) -> {}\nC. (a,b,c) -> {int b = 3; return 2;}\nD. (x,y) -> new RuntimeException()\nE. (var y) -> return 0;\nF. () -> {float r}\nG. (Cat a, b) -> {}",
+    "options": [
+      "A. (Wolf w, var c) -> 39",
+      "B. (final Camel c) -> {}",
+      "C. (a,b,c) -> {int b = 3; return 2;}",
+      "D. (x,y) -> new RuntimeException()",
+      "E. (var y) -> return 0;",
+      "F. () -> {float r}",
+      "G. (Cat a, b) -> {}"
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation": "14. B, D. Option B is a valid lambda expression, one that could be assigned to a Consumer<Camel> reference. Notice that the final modifier is permitted on variables in the parameter list. Option D is correct, as the exception is being returned as an object and not thrown. This would be compatible with a BiFunction that included RuntimeException as its return type. Options A and G are incorrect because they mix format types for the parameters. Option C is invalid because the variable b is used twice. Option E is incorrect, as a return statement is permitted only inside braces ({}). Option F is incorrect because the variable declaration requires a semicolon (;)."
+  },
+  {
+    "id": 15,
+    "question": "15. Which lambda expression, when entered into the blank line in the following code, causes the program to print hahaha? (Choose all that apply.)\nimport java.util.function.Predicate;\npublic class Hyena {\n    private int age = 1;\n    public static void main(String[] args) {\n        var p = new Hyena();\n        double height = 10;\n        int age = 1;\n        testLaugh(p, ________________);\n        age = 2;\n    }\n    static void testLaugh(Hyena panda, Predicate<Hyena> joke) {\n        var r = joke.test(panda) ? \"hahaha\" : \"silence\";\n        System.out.print(r);\n    }\n}\nA. var -> p.age <= 10\nB. shenzi -> age==1\nC. p -> true\nD. age==1\nE. shenzi -> age==2\nF. h -> h.age < 5\nG. None of the above, as the code does not compile",
+    "options": [
+      "A. var -> p.age <= 10",
+      "B. shenzi -> age==1",
+      "C. p -> true",
+      "D. age==1",
+      "E. shenzi -> age==2",
+      "F. h -> h.age < 5",
+      "G. None of the above, as the code does not compile"
+    ],
+    "answer": [
+      "A",
+      "F"
+    ],
+    "explanation": "15. A, F. Option A is a valid lambda expression. While main() is a static method, it can access age since it is using a reference to an instance of Hyena, which is effectively final in this method. Since var is not a reserved word, it may be used for variable names. Option F is also correct, with the lambda variable being a reference to a Hyena object. Options B and E are incorrect; since the local variable age is not effectively final, this would lead to a compilation error. Option C would also cause a compilation error, since the expression uses the variable name p, which is already declared within the method. Finally, option D is incorrect, as this is not even a lambda expression."
+  },
+  {
+    "id": 16,
+    "question": "16. Which of the following can be inserted without causing a compilation error?\npublic void remove(List<Character> chars) {\n    char end = 'z'; // INSERT LINE HERE\n    Predicate<Character> predicate = c -> {\n        char start = 'a'; return start <= c && c <= end;\n    };\n}\nA. char start = 'a';\nB. char c = 'x';\nC. chars = null;\nD. end = '1';\nE. None of the above",
+    "options": [
+      "A. char start = 'a';",
+      "B. char c = 'x';",
+      "C. chars = null;",
+      "D. end = '1';",
+      "E. None of the above"
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "16. C. Lambdas are not allowed to redeclare local variables, making options A and B incorrect. Option D is incorrect because setting end prevents it from being effectively final. Lambdas are only allowed to reference final or effectively final variables. Option C compiles since chars is not used."
+  },
+  {
+    "id": 17,
+    "question": "17. What is the result of running the following class?\n1: import java.util.function.*;\n2:\n3: public class Panda {\n4:     int age;\n5:     public static void main(String[] args) {\n6:         Panda p1 = new Panda();\n7:         p1.age = 1;\n8:         check(p1, p -> {p.age < 5});\n9:     }\n10:     private static void check(Panda panda, Predicate<Panda> pred) {\n11:         String result = pred.test(panda) ? \"match\" : \"not match\";\n12:         System.out.print(result);\n13:     }\n14: }\nA. match\nB. not match\nC. Compiler error on line 8.\nD. Compiler error on line 10.\nE. Compiler error on line 12.\nF. A runtime exception is thrown.",
+    "options": [
+      "A. match",
+      "B. not match",
+      "C. Compiler error on line 8.",
+      "D. Compiler error on line 10.",
+      "E. Compiler error on line 12.",
+      "F. A runtime exception is thrown."
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation": "17. C. Line 8 uses braces around the body. This means the return keyword and semicolon are required. Since the code doesn’t compile, option C is the answer."
+  },
+  {
+    "id": 18,
+    "question": "18. Which functional interfaces complete the following code? For line 7, assume m and n are instances of functional interfaces that exist and have the same type as y. (Choose three.)\n6:\n7:\n8:\n_____________ x = String::new;\n_____________ y = m.andThen(n);\n_____________ z = a -> a + a;\nA. BinaryConsumer<String, String>\nB. BiConsumer<String, String>\nC. BinaryFunction<String, String>\nD. BiFunction<String, String>\nE. Predicate<String>\nF. Supplier<String>\nG. UnaryOperator<String>\nH. UnaryOperator<String, String>",
+    "options": [
+      "A. BinaryConsumer<String, String>",
+      "B. BiConsumer<String, String>",
+      "C. BinaryFunction<String, String>",
+      "D. BiFunction<String, String>",
+      "E. Predicate<String>",
+      "F. Supplier<String>",
+      "G. UnaryOperator<String>",
+      "H. UnaryOperator<String, String>"
+    ],
+    "answer": [
+      "B",
+      "F",
+      "G"
+    ],
+    "explanation": "18. B, F, G. We can eliminate four choices right away. Options A and C are there to mislead you; these interfaces don’t exist. Option D is incorrect because a BiFunction<T,U,R> takes three generic arguments, not two. Option E is incorrect because none of the examples returns a boolean.\nThe declaration on line 6 doesn’t take any parameters, and it returns a String, so a Supplier<String> can fill in the blank, making option F correct. The declaration on line 7 requires you to recognize that Consumer and Function, along with their binary equivalents, have an andThen() method. This makes option B correct. Finally, line 8 takes a single parameter, and it returns the same type, which is a UnaryOperator. Since the types are the same, only one generic parameter is needed, making option G correct."
+  },
+  {
+    "id": 19,
+    "question": "19. Which of the following compiles and prints out the entire set?\nSet<?> set = Set.of(\"lion\", \"tiger\", \"bear\");\nvar s = Set.copyOf(set);\nConsumer<Object> consumer = ________________;\ns.forEach(consumer);\nA. () -> System.out.println(s)\nB. s -> System.out.println(s)\nC. (s) -> System.out.println(s)\nD. System.out.println(s)\nE. System::out::println\nF. System.out::println",
+    "options": [
+      "A. () -> System.out.println(s)",
+      "B. s -> System.out.println(s)",
+      "C. (s) -> System.out.println(s)",
+      "D. System.out.println(s)",
+      "E. System::out::println",
+      "F. System.out::println"
+    ],
+    "answer": [
+      "F"
+    ],
+    "explanation": "19. F. While there is a lot in this question trying to confuse you, note that there are no options about the code not compiling. This allows you to focus on the lambdas and method references. Option A is incorrect because a Consumer requires one parameter. Options B and C are close, but the syntax conflicts with the already defined local variable. Options D and E use incorrect syntax for a method reference. Option F is correct."
+  },
+  {
+    "id": 20,
+    "question": "20. Which lambda can replace the new Sloth() call in the main() method and produce the same output at runtime?\nimport java.util.List;\ninterface Yawn {\n    String yawn(double d, List<Integer> time);\n}\nclass Sloth implements Yawn {\n    public String yawn(double zzz, List<Integer> time) {\n        return \"Sleep: \" + zzz;\n    }\n}\npublic class Vet {\n    public static String takeNap(Yawn y) {\n        return y.yawn(10, null);\n    }\n    public static void main(String… unused) {\n        System.out.print(takeNap(new Sloth()));\n    }\n}\nA. (z,f) -> { String x = \"\"; return \"Sleep: \" + x }\nB. (t,s) -> { String t = \"\"; return \"Sleep: \" + t; }\nC. (w,q) -> {\"Sleep: \" + w}\nD. (e,u) -> { String g = \"\"; \"Sleep: \" + e }\nE. (a,b) -> \"Sleep: \" + (double)(b==null ? a : a)\nF. (r,k) -> { String g = \"\"; return \"Sleep:\"; }\nG. None of the above, as the program does not compile",
+    "options": [
+      "A. (z,f) -> { String x = \"\"; return \"Sleep: \" + x }",
+      "B. (t,s) -> { String t = \"\"; return \"Sleep: \" + t; }",
+      "C. (w,q) -> {\"Sleep: \" + w}",
+      "D. (e,u) -> { String g = \"\"; \"Sleep: \" + e }",
+      "E. (a,b) -> \"Sleep: \" + (double)(b==null ? a : a)",
+      "F. (r,k) -> { String g = \"\"; return \"Sleep:\"; }",
+      "G. None of the above, as the program does not compile"
+    ],
+    "answer": [
+      "E"
+    ],
+    "explanation": "20. E. Option A does not compile because the second statement within the block is missing a semicolon (;) at the end. Option B is an invalid lambda expression because t is defined twice: in the parameter list and within the lambda expression. Options C and D are both missing a return statement and semicolon. Options E and F are both valid lambda expressions, although only option E matches the behavior of the Sloth class. In particular, option F only prints Sleep:, not Sleep: 10.0."
+  },
+  {
+    "id": 21,
+    "question": "21. Which of the following are valid functional interfaces? (Choose all that apply.)\npublic interface Transport {\n    public int go();\n    public boolean equals(Object o);\n}\npublic abstract class Car {\n    public abstract Object swim(double speed, int duration);\n}\npublic interface Locomotive extends Train {\n    public int getSpeed();\n}\npublic interface Train extends Transport {}\nabstract interface Spaceship extends Transport {\n    default int blastOff();\n}\npublic interface Boat {\n    int hashCode();\n    int hashCode(String input);\n}\nA. Boat\nB. Car\nC. Locomotive\nD. Spaceship\nE. Transport\nF. Train\nG. None of these is a valid functional interface.",
+    "options": [
+      "A. Boat",
+      "B. Car",
+      "C. Locomotive",
+      "D. Spaceship",
+      "E. Transport",
+      "F. Train",
+      "G. None of these is a valid functional interface."
+    ],
+    "answer": [
+      "A",
+      "E",
+      "F"
+    ],
+    "explanation": "21. A, E, F. A valid functional interface is one that contains a single abstract method, excluding any public methods that are already defined in the java.lang.Object class. Transport and Boat are valid functional interfaces, as they each contain a single abstract method: go() and hashCode(String), respectively. This gives us options A and E. Since the other methods are part of Object, they do not count as abstract methods. Train is also a functional interface since it extends Transport and does not define any additional abstract methods. This adds option F as the final correct answer. Car is not a functional interface because it is an abstract class. Locomotive is not a functional interface because it includes two abstract methods, one of which is inherited. Finally, Spaceship is not a valid interface, let alone a functional interface, because a default method must provide a body."
+  }
+]

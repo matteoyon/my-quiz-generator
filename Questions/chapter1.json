@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "question": "Which of the following are legal entry point methods that can be run from the command line? (Choose all that apply.)",
     "options": [
       "A. private static void main(String[] args)",
@@ -16,6 +17,7 @@
     "explanation": "Option E is the canonical main() method signature. You need to memorize it. Option D is an alternate form with the redundant final. Option A is incorrect because the main() method must be public. Options B and F are incorrect because the main() method must have a void return type. Option C is incorrect because the main() method must be static."
   },
   {
+    "id": 2,
     "question": "Which answer options represent the order in which the following statements can be assembled into a program that will compile successfully? (Choose all that apply.)",
     "code": "X: class Rabbit {}\nY: import java.util.*;\nZ: package animals;",
     "options": [
@@ -35,6 +37,7 @@
     "explanation": "The package and import statements are both optional. If both are present, the order must be package, then import, and then class. Option A is incorrect because class is before package and import. Option B is incorrect because import is before package. Option F is incorrect because class is before package."
   },
   {
+    "id": 3,
     "question": "Which of the following are true? (Choose all that apply.)",
     "code": "public class Bunny {\npublic static void main(String[] x) {\nBunny bun = new Bunny();\n} }",
     "options": [
@@ -53,6 +56,7 @@
     "explanation": "Bunny is a class, which can be seen from the declaration: public class Bunny. The variable bun is a reference to an object. The method main() is the standard entry point to a program. Option G is incorrect because the parameter type matters, not the parameter name."
   },
   {
+    "id": 4,
     "question": "Which of the following are valid Java identifiers? (Choose all that apply.)",
     "options": [
       "A. _",
@@ -71,8 +75,9 @@
     "explanation": "Option A is invalid because a single underscore is not allowed. Option C is not a valid identifier because true is a Java reserved word. Option D is not valid because a period (.) is not allowed in identifiers. Option F is not valid because the first character is not a letter, dollar sign ($), or underscore (_). Options B, E, and G are valid because they contain only valid characters."
   },
   {
+    "id": 5,
     "question": "Which statements about the following program are correct? (Choose all that apply.)",
-    "code": "2: public class Bear {\n3:\nprivate Bear pandaBear;\n4:\nprivate void roar(Bear b) {\n5:\nSystem.out.println(\"Roar!\");\n6:\npandaBear = b;\n7:\n}\n8:\npublic static void main(String[] args) {\n9:\nBear brownBear = new Bear();\n10:\nBear polarBear = new Bear();\n11:\nbrownBear.roar(polarBear);\n12:\npolarBear = null;\n13:\nbrownBear = null;\n14:\nSystem.gc(); } }",
+    "code": "2: public class Bear {\n3: private Bear pandaBear;\n4: private void roar(Bear b) {\n5: System.out.println(\"Roar!\");\n6: pandaBear = b;\n7: }\n8: public static void main(String[] args) {\n9: Bear brownBear = new Bear();\n10: Bear polarBear = new Bear();\n11: brownBear.roar(polarBear);\n12: polarBear = null;\n13: brownBear = null;\n14: System.gc(); } }",
     "options": [
       "A. The object created on line 9 is first eligible for garbage collection after line 13.",
       "B. The object created on line 9 is first eligible for garbage collection after line 14.",
@@ -90,8 +95,9 @@
     "explanation": "Garbage collection is never guaranteed to run, making option F correct and option E incorrect. Next, the class compiles and runs without issue, so option G is incorrect. The Bear object created on line 9 is accessible until line 13 via the brownBear reference variable, which is option A. The Bear object created on line 10 is accessible via both the polarBear reference and the brownBear.pandaBear reference. After line 12, the object is still accessible via brownBear.pandaBear. After line 13, though, it is no longer accessible since brownBear is no longer accessible, which makes option D the final correct answer."
   },
   {
+    "id": 6,
     "question": "Assuming the following class compiles, how many variables defined in the class or method are in scope on the line marked on line 14?",
-    "code": "1: public class Camel {\n2:\n{ int hairs = 3_000_0; }\n3:\nlong water, air=2;\n4:\nboolean twoHumps = true;\n5:\npublic void spit(float distance) {\n6:\nvar path = \"\";\n7:\n{ double teeth = 32 + distance++; }\n8:\nwhile(water> 0) {\n9:\nint age = twoHumps ? 1 : 2;\n10:\nshort i=-1;\n11:\nfor(i=0; i<10; i++) {\n12:\nvar Private = 2;\n13:\n}\n14:\n// SCOPE\n15:\n}\n16:\n}\n17: }",
+    "code": "1: public class Camel {\n2: { int hairs = 3_000_0; }\n3: long water, air=2;\n4: boolean twoHumps = true;\n5: public void spit(float distance) {\n6: var path = \"\";\n7: { double teeth = 32 + distance++; }\n8: while(water> 0) {\n9: int age = twoHumps ? 1 : 2;\n10: short i=-1;\n11: for(i=0; i<10; i++) {\n12: var Private = 2;\n13: }\n14: // SCOPE\n15: }\n16: }\n17: }",
     "options": [
       "A. 2",
       "B. 3",
@@ -107,8 +113,9 @@
     "explanation": "To solve this problem, you need to trace the braces ({}) and see when variables go in and out of scope. The variables on lines 2 and 7 are only in scope for a single line block. The variable on line 12 is only in scope for the for loop. None of these is in scope on line 14. By contrast, the three instance variables on lines 3 and 4 are available in all instance methods. Additionally, the variables on lines 6, 9, and 10 are available since the method and while loop are still in scope. This is a total of 7 variables, which is option F."
   },
   {
+    "id": 7,
     "question": "Which are true about this code? (Choose all that apply.)",
-    "code": "public class KitchenSink {\nprivate int numForks;\npublic static void main(String[] args) {\nint numKnives;\nSystem.out.print(\"\"\"\n\"# forks = \" + numForks +\n\" # knives = \" + numKnives +\n# cups = 0\"\n\"\"\");\n}\n}",
+    "code": "public class KitchenSink {\nprivate int numForks;\npublic static void main(String[] args) {\nint numKnives;\nSystem.out.print(\"\"\"\n# forks = \" + numForks +\n\" # knives = \" + numKnives +\n# cups = 0\"\"\");\n}\n}",
     "options": [
       "A. The output includes # forks = 0.",
       "B. The output includes # knives = 0.",
@@ -124,6 +131,7 @@
     "explanation": "The first thing to recognize is that this is a text block and the code inside the \"\"\" is just text. Options A and B are incorrect because the numForks and numKnives variables are not used. This is convenient since numKnives is not initialized and would not compile if it were referenced. Option C is correct as it is matching text. Option D is incorrect because the text block does not have a trailing blank line. Finally, option E is also an answer since \" # knives is indented."
   },
   {
+    "id": 8,
     "question": "Which of the following code snippets about var compile without issue when used in a method? (Choose all that apply.)",
     "options": [
       "A. var spring = null;",
@@ -144,6 +152,7 @@
     "explanation": "A var cannot be initialized with a null value without a type, but it can be assigned a null value later if the underlying type is not a primitive. For these reasons, option H is correct, but options A and C are incorrect. Options B and D are correct as the underlying types are String and Integer, respectively. Option E is correct as this is a valid numeric expression. You might know that dividing by zero produces a runtime exception, but the question was only about whether the code compiled. Finally, options F and G are incorrect as var cannot be used in a multiple-variable assignment."
   },
   {
+    "id": 9,
     "question": "Which of the following is correct?",
     "options": [
       "A. An instance variable of type float defaults to 0.",
@@ -160,6 +169,7 @@
     "explanation": "Options C and D are incorrect because local variables don’t have default values. Option A is incorrect because float should have a decimal point. Option B is incorrect because primitives do not default to null. Option E is correct and option F incorrect because reference types in class variables default to null."
   },
   {
+    "id": 10,
     "question": "Which of the following expressions, when inserted independently into the blank line, allow the code to compile? (Choose all that apply.)",
     "code": "public void printMagicData() {\nvar magic = ;\nSystem.out.println(magic);\n}",
     "options": [
@@ -179,8 +189,9 @@
     "explanation": "An underscore (_) can be placed in any numeric literal, as long as it is not at the beginning, at the end, or next to a decimal point (.). Underscores can even be placed next to each other. For these reasons, options A, E, and F are correct. Options B and D are incorrect as the underscore (_) is next to a decimal point (.). Options C and G are incorrect because an underscore (_) cannot be placed at the beginning or end of the literal."
   },
   {
+    "id": 11,
     "question": "Given the following two class files, what is the maximum number of imports that can be removed and have the code still compile?",
-    "code": "// Water.java\npackage aquarium;\npublic class Water { }\n// Tank.java\npackage aquarium;\nimport java.lang.*;\nimport java.lang.System;\nimport aquarium.Water;\nimport aquarium.*;\npublic class Tank {\npublic void print(Water water) {\nSystem.out.println(water); } }",
+    "code": "// Water.java\npackage aquarium;\npublic class Water { }\n\n// Tank.java\npackage aquarium;\nimport java.lang.*;\nimport java.lang.System;\nimport aquarium.Water;\nimport aquarium.*;\npublic class Tank {\n    public void print(Water water) {\n        System.out.println(water);\n    }\n}",
     "options": [
       "A. 0",
       "B. 1",
@@ -195,8 +206,9 @@
     "explanation": "The first two imports can be removed because java.lang is automatically imported. The following two imports can be removed because Tank and Water are in the same package, making the correct option E. If Tank and Water were in different packages, exactly one of these two imports could be removed. In that case, the answer would be option D."
   },
   {
+    "id": 12,
     "question": "Which statements about the following class are correct? (Choose all that apply.)",
-    "code": "1: public class ClownFish {\n2:\nint gills = 0, double weight=2;\n3:\n{ int fins = gills; }\n4:\nvoid print(int length = 3) {\n5:\nSystem.out.println(gills);\n6:\nSystem.out.println(weight);\n7:\nSystem.out.println(fins);\n8:\nSystem.out.println(length);\n9: } }",
+    "code": "1: public class ClownFish {\n2:     int gills = 0, double weight = 2;\n3:     { int fins = gills; }\n4:     void print(int length = 3) {\n5:         System.out.println(gills);\n6:         System.out.println(weight);\n7:         System.out.println(fins);\n8:         System.out.println(length);\n9:     } \n10: }",
     "options": [
       "A. Line 2 generates a compiler error.",
       "B. Line 3 generates a compiler error.",
@@ -215,8 +227,9 @@
     "explanation": "Line 2 does not compile as only one type should be specified, making option A correct. Line 3 compiles without issue as it declares a local variable inside an instance initializer that is never used. Line 4 does not compile because Java does not support setting default method parameter values, making option C correct. Finally, line 7 does not compile because fins is in scope and accessible only inside the instance initializer on line 3, making option D correct."
   },
   {
+    "id": 13,
     "question": "Given the following classes, which of the following snippets can independently be inserted in place of INSERT IMPORTS HERE and have the code compile? (Choose all that apply.)",
-    "code": "package aquarium;\npublic class Water {\nboolean salty = false;\n}\npackage aquarium.jellies;\npublic class Water {\nboolean salty = true;\n}\npackage employee;\nINSERT IMPORTS HERE\npublic class WaterFiller {Water water;\n}",
+    "code": "package aquarium;\npublic class Water {\n    boolean salty = false;\n}\n\npackage aquarium.jellies;\npublic class Water {\n    boolean salty = true;\n}\n\npackage employee;\nINSERT IMPORTS HERE\npublic class WaterFiller { Water water; }",
     "options": [
       "A. import aquarium.*;",
       "B. import aquarium.Water;",
@@ -231,14 +244,13 @@
     ],
     "answer": [
       "A",
-      "C",
-      "D",
-      "F",
-      "G"
+      "B",
+      "C"
     ],
     "explanation": "Option A is correct because it imports all the classes in the aquarium package including aquarium.Water. Options B and C are correct because they import Water by class name. Since importing by class name takes precedence over wildcards, these compile. Option D is incorrect because Java doesn’t know which of the two wildcard Water classes to use. Option E is incorrect because you cannot specify the same class name in two imports."
   },
   {
+    "id": 14,
     "question": "Which of the following statements about the code snippet are true? (Choose all that apply.)",
     "code": "3: short numPets = 5L;\n4: int numGrains = 2.0;\n5: String name = \"Scruffy\";\n6: int d = numPets.length();\n7: int e = numGrains.length;\n8: int f = name.length();",
     "options": [
@@ -258,6 +270,7 @@
     "explanation": "Line 3 does not compile because the L suffix makes the literal value a long, which cannot be stored inside a short directly, making option A correct. Line 4 does not compile because int is an integral type, but 2.0 is a double literal value, making option B correct. Line 5 compiles without issue. Lines 6 and 7 do not compile because numPets and numGrains are both primitives, and you can call methods only on reference types, not primitive values, making options D and E correct, respectively. Finally, line 8 compiles because there is a length() method defined on String."
   },
   {
+    "id": 15,
     "question": "Which of the following statements about garbage collection are correct? (Choose all that apply.)",
     "options": [
       "A. Calling System.gc() is guaranteed to free up memory by destroying objects eligible for garbage collection.",
@@ -276,8 +289,9 @@
     "explanation": "In Java, there are no guarantees about when garbage collection will run. The JVM is free to ignore calls to System.gc(). For this reason, options A, B, and D are incorrect. Option C is correct as the purpose of garbage collection is to reclaim used memory. Option E is also correct that an object may never be garbage collected, such as if the program ends before garbage collection runs. Option F is correct and is the primary means by which garbage collection algorithms determine whether an object is eligible for garbage collection. Finally, option G is incorrect as marking a variable final means it is constant within its own scope. For example, a local variable marked final will be eligible for garbage collection after the method ends, assuming there are no other references to the object that exist outside the method."
   },
   {
+    "id": 16,
     "question": "Which are true about this code? (Choose all that apply.)",
-    "code": "var blocky = \"\"\"\nsquirrel \\s\npigeon\n\\\ntermite\"\"\";\nSystem.out.print(blocky);",
+    "code": "var blocky = \"\"\"\n  squirrel \\s\n  pigeon\n  \\\n  termite\"\"\";\nSystem.out.print(blocky);",
     "options": [
       "A. It outputs two lines.",
       "B. It outputs three lines.",
@@ -293,8 +307,9 @@
     "explanation": "Option A is correct. There are two lines. One starts with squirrel, and the other starts with pigeon. Remember that a backslash means to skip the line break. Option D is also correct as \\s means to keep whitespace. In a text block, incidental indentation is ignored, making option F incorrect."
   },
   {
+    "id": 17,
     "question": "What lines are printed by the following program? (Choose all that apply.)",
-    "code": "1: public class WaterBottle {\n2:\nprivate String brand;\n3:\nprivate boolean empty;\n4:\npublic static float code;\n5:\npublic static void main(String[] args) {\n6:\nWaterBottle wb = new WaterBottle();\n7:\nSystem.out.println(\"Empty = \" + wb.empty);\n8:\nSystem.out.println(\"Brand = \" + wb.brand);\n9:\nSystem.out.println(\"Code = \" + code);\n10: } }",
+    "code": "1: public class WaterBottle {\n2:     private String brand;\n3:     private boolean empty;\n4:     public static float code;\n5:     public static void main(String[] args) {\n6:         WaterBottle wb = new WaterBottle();\n7:         System.out.println(\"Empty = \" + wb.empty);\n8:         System.out.println(\"Brand = \" + wb.brand);\n9:         System.out.println(\"Code = \" + code);\n10:    } \n11: }",
     "options": [
       "A. Line 8 generates a compiler error.",
       "B. Line 9 generates a compiler error.",
@@ -313,6 +328,7 @@
     "explanation": "The code compiles and runs without issue, so options A and B are incorrect. A boolean field initializes to false, making option D correct with Empty = false being printed. Object references initialize to null, not the empty String, so option F is correct with Brand = null being printed. Finally, the default value of floating-point numbers is 0.0. Although float values can be declared with an f suffix, they are not printed with an f suffix. For these reasons, option G is correct and Code = 0.0 is printed."
   },
   {
+    "id": 18,
     "question": "Which of the following statements about var are true? (Choose all that apply.)",
     "options": [
       "A. A var can be used as a constructor parameter.",
@@ -331,6 +347,7 @@
     "explanation": "A var cannot be used for a constructor or method parameter or for an instance or class variable, making option A incorrect and option C correct. The type of a var is known at compile time, and the type cannot be changed at runtime, although its value can change at runtime. For these reasons, options B and F are correct, and option E is incorrect. Option D is incorrect, as var is not permitted in multiple-variable declarations. Finally, option G is incorrect, as var is not a reserved word in Java."
   },
   {
+    "id": 19,
     "question": "Which are true about the following code? (Choose all that apply.)",
     "code": "var num1 = Integer.parseInt(\"11\");\nvar num2 = Integer.valueOf(\"B\", 16);\nSystem.out.println(Integer.max(num1, num2));",
     "options": [
@@ -348,8 +365,9 @@
     "explanation": "The first two lines provide a way to convert a String into a number. The first is a int primitive, and the second is a Integer reference object, making option D one of the answers. Remember that B is 11 in base 16. The code is correct, and the maximum is 11, which is option A."
   },
   {
+    "id": 20,
     "question": "Which statement about the following class is correct?",
-    "code": "1:\n2:\npublic class PoliceBox {\nString color;3:\nlong age;\n4:\npublic void PoliceBox() {\n5:\ncolor = \"blue\";\n6:\nage = 1200;\n7:\n}\n8:\npublic static void main(String []time) {\n9:\nvar p = new PoliceBox();\n10:\nvar q = new PoliceBox();\n11:\np.color = \"green\";\n12:\np.age = 1400;\n13:\np = q;\n14:\nSystem.out.println(\"Q1=\"+q.color);\n15:\nSystem.out.println(\"Q2=\"+q.age);\n16:\nSystem.out.println(\"P1=\"+p.color);\n17:\nSystem.out.println(\"P2=\"+p.age);\n18: } }",
+    "code": "1: public class PoliceBox {\n2:     String color;\n3:     long age;\n4:     public void PoliceBox() {\n5:         color = \"blue\";\n6:         age = 1200;\n7:     }\n8:     public static void main(String[] time) {\n9:         var p = new PoliceBox();\n10:        var q = new PoliceBox();\n11:        p.color = \"green\";\n12:        p.age = 1400;\n13:        p = q;\n14:        System.out.println(\"Q1=\" + q.color);\n15:        System.out.println(\"Q2=\" + q.age);\n16:        System.out.println(\"P1=\" + p.color);\n17:        System.out.println(\"P2=\" + p.age);\n18:     }\n19: }",
     "options": [
       "A. It prints Q1=blue.",
       "B. It prints Q2=1200.",
@@ -366,8 +384,9 @@
     "explanation": "The key thing to notice is that line 4 does not define a constructor but instead a method named PoliceBox(), since it has a return type of void. This method is never executed during the program run, and color and age are assigned the default values null and 0L, respectively. Lines 11 and 12 change the values for an object associated with p, but then, on line 13, the p variable is changed to point to the object associated with q, which still has the default values. For this reason, the program prints Q1=null, Q2=0, P1=null, and P2=0, making option C the only correct answer."
   },
   {
+    "id": 21,
     "question": "What is the output of executing the following class?",
-    "code": "1: public class Salmon {\n2:\nint count;\n3:\n{ System.out.print(count+\"-\"); }\n4:\n{ count++; }\n5:\npublic Salmon() {\n6:\ncount = 4;\n7:\nSystem.out.print(2+\"-\");\n8:\n}\n9:\npublic static void main(String[] args) {\n10:\nSystem.out.print(7+\"-\");\n11:\nvar s = new Salmon();\n12:\nSystem.out.print(s.count+\"-\"); } }",
+    "code": "1: public class Salmon {\n2: int count;\n3: { System.out.print(count+\"-\"); }\n4: { count++; }\n5: public Salmon() {\n6: count = 4;\n7: System.out.print(2+\"-\"); }\n8: public static void main(String[] args) {\n9: System.out.print(7+\"-\");\n10: var s = new Salmon();\n11: System.out.print(s.count+\"-\"); } }",
     "options": [
       "A. 7-0-2-1-",
       "B. 7-0-1-",
@@ -384,6 +403,7 @@
     "explanation": "We start with the main() method, which prints 7- on line 10. Next, a new Salmon instance is created on line 11. This causes the two instance initializers on lines 3 and 4 to be executed in order. The default value of an instance variable of type int is 0, so 0- is printed next, and count is assigned a value of 1. Next, the constructor is called. This assigns a value of 4 to count and prints 2-. Finally, line 12 prints 4-, since that is the value of count. Putting it all together, we have 7-0-2-4-, making option D the correct answer."
   },
   {
+    "id": 22,
     "question": "Given the following class, which of the following lines of code can independently replace INSERT CODE HERE to make the code compile? (Choose all that apply.)",
     "code": "public class Price {\npublic void admission() {\nINSERT CODE HERE\nSystem.out.print(amount);\n} }",
     "options": [
@@ -404,8 +424,9 @@
     "explanation": "First, 0b is the prefix for a binary value, and 0x is the prefix for a hexadecimal value. These values can be assigned to many primitive types, including int and double, making options C and F correct. Option A is incorrect because naming the variable Amount will cause the System.out.print(amount) call on the next line to not compile. Option B is incorrect because 9L is a long value. If the type was changed to long amount = 9L, then it would compile. Option D is incorrect because 1_2.0 is a double value. If the type was changed to double amount = 1_2.0, then it would compile. Options E and H are incorrect because the underscore (_) appears next to the decimal point (.), which is not allowed. Finally, option G is correct, and the underscore and assignment usage is valid."
   },
   {
+    "id": 23,
     "question": "Which statements about the following class are true? (Choose all that apply.)",
-    "code": "1: public class River {\n2:\nint Depth = 1;\n3:\nfloat temp = 50.0;\n4:\npublic void flow() {\n5:\nfor (int i = 0; i < 1; i++) {\n6:\nint depth = 2;\n7:\ndepth++;\n8:\ntemp--;\n9:\n}\n10:\nSystem.out.println(depth);\n11:\nSystem.out.println(temp); }\n12:\npublic static void main(String… s) {\n13:\nnew River().flow();\n14: } }",
+    "code": "1: public class River {\n2: int Depth = 1;\n3: float temp = 50.0;\n4: public void flow() {\n5: for (int i = 0; i < 1; i++) {\n6: int depth = 2;\n7: depth++;\n8: temp--;\n9: }\n10: System.out.println(depth);\n11: System.out.println(temp); }\n12: public static void main(String… s) {\n13: new River().flow();\n14: } }",
     "options": [
       "A. Line 3 generates a compiler error.",
       "B. Line 6 generates a compiler error.",
