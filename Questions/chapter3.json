@@ -1,0 +1,470 @@
+[
+  {
+    "question": "What is the output of the following code snippet?",
+    "code": "32: Object skips = 10;\n33: switch (skips) {\n34: case a when a < 10 -> System.out.print(2);\n35: case b when b>= 10 -> System.out.print(4);\n36: case null -> System.out.print(6);\n37: default -> System.out.print(8);\n38: }",
+    "options": [
+      "A. 2",
+      "B. 4",
+      "C. 6",
+      "D. 8",
+      "E. Exactly one line does not compile.",
+      "F. Exactly two lines do not compile.",
+      "G. None of the above."
+    ],
+    "answer": ["B"],
+    "explanation": "Since this is a pattern matching switch statement, the case branches are evaluated in the order in which they appear. In particular, each branch does not dominate the ones after it, so the code compiles without issue. If either of the when clauses were removed from their accompanying case clause, then the code would not compile. The first branch is skipped because Closed does not match Open. The second one matches, resulting in 20 being printed at runtime and making option B correct."
+  },
+  {
+    "question": "Which of the following data types can be used in a switch expression? (Choose all that apply.)",
+    "options": [
+      "A. enum",
+      "B. int",
+      "C. Byte",
+      "D. long",
+      "E. boolean",
+      "F. double"
+    ],
+    "answer": ["A", "B", "C"],
+    "explanation": "A switch expression supports enum values, making option A correct. It also supports int and byte primitives, including their wrapper classes Integer and Byte, making options B and C correct. It does not support the other types."
+  },
+  {
+    "question": "What is the output of the following code snippet?",
+    "code": "3: int temperature = 4;\n4: long humidity = -temperature + temperature * 3;\n5: if (temperature>=4)\n6: if (humidity < 6) System.out.println(\"Too Low\");\n7: else System.out.println(\"Just Right\");\n8: else System.out.println(\"Too High\");",
+    "options": [
+      "A. Too Low",
+      "B. Just Right",
+      "C. Too High",
+      "D. A NullPointerException is thrown at runtime.",
+      "E. The code will not compile because of line 7.",
+      "F. The code will not compile because of line 8."
+    ],
+    "answer": ["B"],
+    "explanation": "The code compiles and runs without issue, so options D, E, and F are incorrect. Even though two consecutive else statements on lines 7 and 8 look a little odd, they are associated with separate if statements on lines 5 and 6, respectively. The value of humidity on line 4 is equal to -4 + 12, which is 8. The first if statement evaluates to true on line 5, so line 6 is executed and evaluates to false. This causes the else statement on line 7 to run, printing Just Right and making option B the correct answer."
+  },
+  {
+    "question": "Which of the following data types are permitted on the right side of a for-each expression? (Choose all that apply.)",
+    "options": [
+      "A. Double[][]",
+      "B. Object",
+      "C. Map",
+      "D. List",
+      "E. String",
+      "F. char[]",
+      "G. Exception"
+    ],
+    "answer": ["A", "D", "F"],
+    "explanation": "A for-each loop supports arrays, making options A and F correct. For Double[][], each element of the for-each loop would be a Double[]. A for-each also supports classes that implement java.lang.Iterable. Although this includes many of the Collections Framework classes, not all of them implement java.lang.Iterable. For this reason, option C is incorrect, and option D is correct. Options B, E, and G are incorrect, as they do not implement java.lang.Iterable. Although a String is a list of ordered characters, the class does not implement the required interface for a for-each loop."
+  },
+  {
+    "question": "What is the output of calling printReptile(6)?",
+    "code": "void printReptile(int category) {\nvar type = switch (category) {\ncase 1,2 -> \"Snake\";\ncase 3,4 -> \"Lizard\";\ncase 5,6 -> \"Turtle\";\ncase 7,8 -> \"Alligator\";\n};\nSystem.out.print(type);\n}",
+    "options": [
+      "A. Snake",
+      "B. Lizard",
+      "C. Turtle",
+      "D. Alligator",
+      "E. TurtleAlligator",
+      "F. None of the above"
+    ],
+    "answer": ["C"],
+    "explanation": "The code does not compile because the switch expression requires all possible case values to be handled, making option F correct. If a valid default clause was added, then the code would compile and print Turtle at runtime."
+  },
+  {
+    "question": "What is the output of the following code snippet?",
+    "code": "List<Integer> myFavoriteNumbers = new ArrayList<>();\nmyFavoriteNumbers.add(10);\nmyFavoriteNumbers.add(14);\nfor (var a : myFavoriteNumbers) {\nSystem.out.print(a + \", \");\nbreak;\n}\nfor (int b : myFavoriteNumbers) {\ncontinue;\nSystem.out.print(b + \", \");\n}\nfor (Object c : myFavoriteNumbers)\nSystem.out.print(c + \", \");",
+    "options": [
+      "A. It compiles and runs without issue but does not produce any output.",
+      "B. 10, 14,",
+      "C. 10, 10, 14,",
+      "D. 10, 10, 14, 10, 14,",
+      "E. Exactly one line of code does not compile.",
+      "F. Exactly two lines of code do not compile.",
+      "G. Three or more lines of code do not compile.",
+      "H. The code contains an infinite loop and does not terminate."
+    ],
+    "answer": ["E"],
+    "explanation": "The second for-each loop contains a continue followed by a print() statement. Because the continue is not conditional and always included as part of the body of the for-each loop, the print() statement is not reachable. For this reason, the print() statement does not compile. As this is the only compilation error, option E is correct. The other lines of code compile without issue."
+  },
+  {
+    "question": "Assuming weather is a well-formed nonempty array, which code snippet, when inserted independently into the blank in the following code, prints all of the elements of weather? (Choose all that apply.)",
+    "code": "private void print(int[] weather) {\nfor () {\nSystem.out.println(weather[i]);\n}\n}",
+    "options": [
+      "A. int i=weather.length; i>0; i--",
+      "B. int i=0; i<=weather.length-1; ++i",
+      "C. var w : weather",
+      "D. int i=weather.length-1; i>=0; i--",
+      "E. int i=0, int j=3; i<weather.length; ++i",
+      "F. int i=0; ++i<10 && i<weather.length;",
+      "G. None of the above"
+    ],
+    "answer": ["B", "D"],
+    "explanation": "Option A is incorrect because on the first iteration, it attempts to access weather[weather.length] of the nonempty array, which causes an ArrayIndexOutOfBoundsException to be thrown. Option B is correct and will print the elements in order. Option C doesn’t compile as i is undefined in weather[i]. For this to work, the body of the for-each loop would have to be updated as well. Option D is also correct and is a common way to print the elements of an array in reverse order. Option E does not compile and is therefore incorrect. You can declare multiple elements in a for loop, but the data type must be listed only once, such as in for (int i=0, j=3; …). Finally, option F is incorrect because the first element of the array is skipped. Since the conditional expression is checked before the loop is executed the first time, the first value of i used inside the body of the loop will be 1."
+  },
+  {
+    "question": "What is the output of calling printType(11)?",
+    "code": "31: void printType(Object o) {\n32: if (o instanceof Integer bat) {\n33: System.out.print(\"int\");\n34: } else if (o instanceof Integer bat && bat < 10) {\n35: System.out.print(\"small int\");\n36: } else if (o instanceof Long bat || bat <= 20) {\n37: System.out.print(\"long\");\n38: } default {\n39: System.out.print(\"unknown\");\n40: }\n41: }",
+    "options": [
+      "A. int",
+      "B. small int",
+      "C. long",
+      "D. unknown",
+      "E. Nothing is printed.",
+      "F. The code contains one line that does not compile.",
+      "G. The code contains two lines that do not compile.",
+      "H. None of the above."
+    ],
+    "answer": ["G"],
+    "explanation": "The first two pattern matching statements compile without issue. The variable bat is allowed to be used again, provided it is no longer in scope. Line 36 does not compile, though. Due to flow scoping, if o is not a Long, then bat is not in scope in the expression bat <= 20. Line 38 also does not compile as default cannot be used as part of an if/else statement. For these two reasons, option G is correct."
+  },
+  {
+    "question": "Which statements, when inserted independently into the following blank, will cause the code to print 2 at runtime? (Choose all that apply.)",
+    "code": "int count = 0;\nBUNNY: for (int row = 1; row <=3; row++)\nRABBIT: for (int col = 0; col <3 ; col++) {\nif ((col + row) % 2 == 0)\n;\ncount++;\n}\nSystem.out.println(count);",
+    "options": [
+      "A. break BUNNY",
+      "B. break RABBIT",
+      "C. continue BUNNY",
+      "D. continue RABBIT",
+      "E. break",
+      "F. continue",
+      "G. None of the above, as the code contains a compiler error"
+    ],
+    "answer": ["B", "C", "E"],
+    "explanation": "The code contains a nested loop and a conditional expression that is executed if the sum of col + row is an even number; otherwise, count is incremented. Note that options E and F are equivalent to options B and D, respectively, since unlabeled statements apply to the most inner loop. Studying the loops, the first time the condition is true is in the second iteration of the inner loop, when row is 1 and col is 1. Option A is incorrect because this causes the loop to exit immediately with count only being set to 1. Options B, C, and E follow the same pathway. First, count is incremented to 1 on the first inner loop, and then the inner loop is exited. On the next iteration of the outer loop, row is 2 and col is 0, so execution exits the inner loop immediately. On the third iteration of the outer loop, row is 3 and col is 0, so count is incremented to 2. In the next iteration of the inner loop, the sum is even, so we exit, and our program is complete, making options B, C, and E each correct. Options D and F are both incorrect, as they cause the inner and outer loops to execute multiple times, with count having a value of 5 when done. You don’t need to trace through all the iterations; just stop when the value of count exceeds 2."
+  },
+  {
+    "question": "Given the following method, how many lines contain compilation errors?",
+    "code": "8: enum DayOfWeek {\n9: SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;\n10: private DayOfWeek getWeekDay(int day, final int thursday) {\n11: int otherDay = day;\n12: int Sunday = 0;\n13: switch (otherDay) {\n14: default:\n15: case 1: continue;\n16: case thursday: return DayOfWeek.THURSDAY;\n17: case 2,10: break;\n18: case Sunday: return DayOfWeek.SUNDAY;\n19: case DayOfWeek.MONDAY: return DayOfWeek.MONDAY;\n20: }\n21: return DayOfWeek.FRIDAY;\n22: } }",
+    "options": [
+      "A. None, the code compiles and runs without issue.",
+      "B. 1.",
+      "C. 2.",
+      "D. 3.",
+      "E. 4.",
+      "F. 5.",
+      "G. 6.",
+      "H. The code compiles but may produce an error at runtime."
+    ],
+    "answer": ["E"],
+    "explanation": "This code contains numerous compilation errors, making options A and H incorrect. Line 15 does not compile, as continue cannot be used inside a switch statement like this. Line 16 is not a compile-time constant since any int value can be passed as a parameter. Marking it final does not change this, so it doesn’t compile. Line 18 does not compile because Sunday is not marked as final. Being effectively final is insufficient. Finally, line 19 does not compile because DayOfWeek.MONDAY is not an int value. While switch statements do support enum values, each case clause must have the same data type as the switch variable otherDay, which is int. The rest of the lines do compile. Since exactly four lines do not compile, option E is the correct answer."
+  },
+  {
+    "question": "What is the output of calling printLocation(Animal.MAMMAL)?",
+    "code": "10: class Zoo {\n11: enum Animal {BIRD, FISH, MAMMAL}\n12: void printLocation(Animal a) {\n13: long type = switch (a) {\n14: case BIRD -> 1;\n15: case FISH -> 2;\n16: case MAMMAL -> 3;\n17: default -> 4;\n18: };\n19: System.out.print(type);\n20: } }",
+    "options": [
+      "A. 3",
+      "B. 4",
+      "C. 34",
+      "D. The code does not compile because of line 13.",
+      "E. The code does not compile because of line 17.",
+      "F. None of the above."
+    ],
+    "answer": ["A"],
+    "explanation": "The code compiles and runs without issue, printing 3 at runtime and making option A correct. The default clause on line 17 is optional since all the enum values are accounted for and can be removed without changing the output."
+  },
+  {
+    "question": "What is the result of the following code snippet?",
+    "code": "3: int sing = 8, squawk = 2, notes = 0;\n4: while (sing > squawk) {\n5: sing--;\n6: squawk += 2;\n7: notes += sing + squawk;\n8: }\n9: System.out.println(notes);",
+    "options": [
+      "A. 11",
+      "B. 13",
+      "C. 23",
+      "D. 33",
+      "E. 50",
+      "F. The code will not compile because of line 7."
+    ],
+    "answer": ["C"],
+    "explanation": "Prior to the first iteration, sing = 8, squawk = 2, and notes = 0. After the iteration of the first loop, sing is updated to 7, squawk to 4, and notes to the sum of the new values for sing + squawk, 7 + 4 = 11. After the iteration of the second loop, sing is updated to 6, squawk to 6, and notes to the sum of itself plus the new values for sing + squawk, 11 + 6 + 6 = 23. On the third iteration of the loop, sing > squawk evaluates to false, as 6 > 6 is false. The loop ends and the most recent value of sing, 23, is output, so the correct answer is option C."
+  },
+  {
+    "question": "What is the result of calling getHatSize(9f) on the following code snippet?",
+    "code": "10: int getHatSize(Number measurement) {\n11: return switch (measurement) {\n12: case Double d -> 1 + d.intValue();\n13: case null -> 11;\n14: case !(Number n) -> 3 + n.intValue();\n15: case Float f when f < 10 -> 4 + f.intValue();\n16: };\n17: }",
+    "options": [
+      "A. 10",
+      "B. 11",
+      "C. 12",
+      "D. 13",
+      "E. The code does not compile because it is missing a default clause.",
+      "F. The code does not compile for a different reason."
+    ],
+    "answer": ["F"],
+    "explanation": "The code does not compile because case clause uses the logical complement operator (!), which is not permitted with pattern matching. If this was removed, then the code would still not compile, as this clause would dominate the case on line 15, leading to unreachable code on line 15. For this reason, option F is correct."
+  },
+  {
+    "question": "What is the output of the following code snippet?",
+    "code": "2: boolean keepGoing = true;\n3: int result = 15, meters = 10;\n4: do {\n5: meters--;\n6: if (meters == 8) keepGoing = false;\n7: result -= 2;\n8: } while keepGoing;\n9: System.out.println(result);",
+    "options": [
+      "A. 7",
+      "B. 9",
+      "C. 10",
+      "D. 11",
+      "E. 15",
+      "F. The code will not compile because of line 6.",
+      "G. The code does not compile for a different reason."
+    ],
+    "answer": ["G"],
+    "explanation": "This example may look complicated, but the code does not compile. Line 8 is missing the required parentheses around the boolean conditional expression. Since the code does not compile and it is not because of line 6, option G is the correct answer. If line 8 was corrected with parentheses, then the loop would be executed twice, and the output would be 11."
+  },
+  {
+    "question": "Which statements about the following code snippet are correct? (Choose all that apply.)",
+    "code": "for (var penguin : new int[2])\nSystem.out.println(penguin);\nvar ostrich = new Character[3];\nfor (var emu : ostrich)\nSystem.out.println(emu);\nList<Integer> parrots = new ArrayList<Integer>();\nfor (var macaw : parrots)\nSystem.out.println(macaw);",
+    "options": [
+      "A. The data type of penguin is Integer.",
+      "B. The data type of penguin is int.",
+      "C. The data type of emu is undefined.",
+      "D. The data type of emu is Character.",
+      "E. The data type of macaw is List.",
+      "F. The data type of macaw is Integer.",
+      "G. None of the above, as the code does not compile."
+    ],
+    "answer": ["B", "D", "F"],
+    "explanation": "The code does compile, making option G incorrect. In the first for-each loop, the right side of the for-each loop has a type of int[], so each element penguin has a type of int, making option B correct. In the second for-each loop, ostrich has a type of Character[], so emu has a data type of Character, making option D correct. In the last for-each loop, parrots has a data type of List<Integer>. Since the generic type of Integer is used in the List, macaw will have a data type of Integer, making option F correct."
+  },
+  {
+    "question": "What is the result of the following code snippet?",
+    "code": "final char a = 'A', e = 'E';\nchar grade = 'B';\nswitch (grade) {\ndefault:\ncase a:\ncase 'B': 'C': System.out.print(\"great \");\ncase 'D':\nSystem.out.print(\"good \"); break;\ncase e:\ncase 'F':\nSystem.out.print(\"not good \");\n}",
+    "options": [
+      "A. great",
+      "B. great good",
+      "C. good",
+      "D. not good",
+      "E. The code does not compile because the data type of one or more case clauses does not match the data type of the switch variable.",
+      "F. None of the above."
+    ],
+    "answer": ["F"],
+    "explanation": "The code does not compile, although not for the reason specified in option E. The second case clause contains invalid syntax. Each case clause must have the keyword case—in other words, you cannot chain them with a colon (:). For this reason, option F is the correct answer. This line could have been fixed to say case ’B’, ’C’ or by adding the case keyword before ’C’; then the rest of the code would have compiled and printed great good at runtime."
+  },
+  {
+    "question": "Given the following array, which code snippets print the elements in reverse order from how they are declared? (Choose all that apply.)",
+    "code": "char[] wolf = {'W', 'e', 'b', 'b', 'y'};",
+    "options": [
+      "A. int q = wolf.length;\nfor ( ; ; ) {\nSystem.out.print(wolf[--q]);\nif (q == 0) break;\n}",
+      "B. for (int m = wolf.length - 1; m >= 0; --m)\nSystem.out.print(wolf[m]);",
+      "C. for (int z = 0; z < wolf.length; z++)\nSystem.out.print(wolf[wolf.length - z]);",
+      "D. int x = wolf.length - 1;\nfor (int j = 0; x >= 0 && j == 0; x--)\nSystem.out.print(wolf[x]);",
+      "E. final int r = wolf.length;\nfor (int w = r - 1; r > -1; w = r - 1)\nSystem.out.print(wolf[w]);",
+      "F. for (int i = wolf.length; i > 0; --i)\nSystem.out.print(wolf[i]);",
+      "G. None of the above"
+    ],
+    "answer": ["A", "B", "D"],
+    "explanation": "To print items in the wolf array in reverse order, the code needs to start with wolf[wolf.length-1] and end with wolf[0]. Option A accomplishes this and is the first correct answer. Option B is also correct and is one of the most common ways a reverse loop is written. The termination condition is often m>=0 or m>-1, and both are correct. Options C and F each cause an ArrayIndexOutOfBoundsException at runtime since both read from wolf[wolf.length] first, with an index that is passed the length of the 0-based array wolf. The form of option C would be successful if the value was changed to wolf[wolf.length-z-1]. Option D is also correct, as the j is extraneous and can be ignored in this example. Finally, option E is incorrect and produces an infinite loop, as w is repeatedly set to r-1, in this case 4, on every loop iteration. Since the update statement has no effect after the first iteration, the condition is never met, and the loop never terminates."
+  },
+  {
+    "question": "What distinct numbers are printed when the following method is executed? (Choose all that apply.)",
+    "code": "private void countAttendees() {\nint participants = 4, animals = 2, performers = -1;\nwhile ((participants = participants + 1) < 10) {}\ndo {} while (animals++ <= 1);\nfor ( ; performers < 2; performers += 2) {}\nSystem.out.println(participants);\nSystem.out.println(animals);\nSystem.out.println(performers);\n}",
+    "options": [
+      "A. 6",
+      "B. 3",
+      "C. 4",
+      "D. 5",
+      "E. 10",
+      "F. 9",
+      "G. The code does not compile.",
+      "H. None of the above."
+    ],
+    "answer": ["B", "E"],
+    "explanation": "The code compiles without issue and prints two distinct numbers at runtime, so options G and H are incorrect. The first loop executes a total of five times, with the loop ending when participants has a value of 10. For this reason, option E is correct. In the second loop, animals starts out not less than or equal to 1, but since it is a do/while loop, it executes at least once. In this manner, animals takes on a value of 3 and the loop terminates, making option B correct. Finally, the last loop executes a total of two times, with performers starting with -1, going to 1 at the end of the first loop, and then ending with a value of 3 after the second loop, which breaks the loop. This makes option B a correct answer twice over."
+  },
+  {
+    "question": "What is the output of the following code snippet?",
+    "code": "2: double iguana = 0;\n3: do {\n4: int snake = 1;\n5: System.out.print(snake++ + \" \");\n6: iguana--;\n7: } while (snake <= 5);\n8: System.out.println(iguana);",
+    "options": [
+      "A. 1 2 3 4 -4.0",
+      "B. 1 2 3 4 -5.0",
+      "C. 1 2 3 4 5 -4.0",
+      "D. 0 1 2 3 4 5 -5.0",
+      "E. The code does not compile.",
+      "F. The code compiles but produces an infinite loop at runtime.",
+      "G. None of the above."
+    ],
+    "answer": ["E"],
+    "explanation": "The variable snake is declared within the body of the do/while statement, so it is out of scope on line 7. For this reason, option E is the correct answer. If snake were declared before line 3 with a value of 1, then the output would have been 1 2 3 4 5 -5.0, and option G would have been the correct answer."
+  },
+  {
+    "question": "Which statements, when inserted into the following blanks, allow the code to compile and run without entering an infinite loop? (Choose all that apply.)",
+    "code": "4: int height = 1;\n5: L1: while (height++ < 10) {\n6: long humidity = 12;\n7: L2: do {\n8: if (humidity-- % 12 == 0) ;\n9: int temperature = 30;\n10: L3: for ( ; ; ) {\n11: temperature++;\n12: if (temperature > 50) ;\n13: }\n14: } while (humidity > 4);\n15: }",
+    "options": [
+      "A. break L2 on line 8; continue L2 on line 12",
+      "B. continue on line 8; continue on line 12",
+      "C. break L3 on line 8; break L1 on line 12",
+      "D. continue L2 on line 8; continue L3 on line 12",
+      "E. continue L2 on line 8; continue L2 on line 12",
+      "F. None of the above, as the code contains a compiler error"
+    ],
+    "answer": ["A", "E"],
+    "explanation": "The most important thing to notice when reading this code is that the innermost loop is an infinite loop. Therefore, you are looking for solutions that skip the innermost loop entirely or that exit that loop. Option A is correct, as break L2 on line 8 causes the second inner loop to exit every time it is entered, skipping the innermost loop entirely. For option B, the first continue on line 8 causes the execution to skip the innermost loop on the first iteration of the second loop but not the second iteration of the second loop. The innermost loop is executed, and with continue on line 12, it produces an infinite loop at runtime, making option B incorrect. Option C is incorrect because it contains a compiler error. The label L3 is not visible outside its loop. Option D is incorrect, as it is equivalent to option B since the unlabeled break and continue apply to the nearest loop and therefore produce an infinite loop at runtime. Like option A, the continue L2 on line 8 allows the innermost loop to be executed the second time the second loop is called. The continue L2 on line 12 exits the infinite loop, though, causing control to return to the second loop. Since the first and second loops terminate, the code terminates, and option E is a correct answer."
+  },
+  {
+    "question": "A minimum of how many lines need to be corrected before the following method will compile?",
+    "code": "21: void findZookeeper(Integer id) {\n22: System.out.print(switch (id) {\n23: case 10 -> {\"Jane\";}\n24: case 20 -> {yield \"Lisa\";};\n25: case 30 -> \"Kelly\";\n26: case 30 -> \"Sarah\";\n27: default -> \"Unassigned\";\n28: });\n29: }",
+    "options": [
+      "A. Zero",
+      "B. One",
+      "C. Two",
+      "D. Three",
+      "E. Four",
+      "F. Five"
+    ],
+    "answer": ["D"],
+    "explanation": "Line 23 does not compile because it is missing a yield statement. Line 24 does not compile because it contains an extra semicolon at the end. Finally, lines 25 and 26 do not compile because they use the same case value. At least one of them would need to be changed for the code to compile. Since three lines need to be corrected, option D is correct."
+  },
+  {
+    "question": "What is the output of calling printLocation(Animal.MAMMAL)?",
+    "code": "10: class Zoo {\n11: enum Animal {BIRD, FISH, MAMMAL}\n12: void printLocation(Animal a) {\n13: long type = switch (a) {\n14: case BIRD -> 1;\n15: case FISH -> 2;\n16: case MAMMAL -> 3;\n17: default -> 4;\n18: };\n19: System.out.print(type);\n20: } }",
+    "options": [
+      "A. 3",
+      "B. 4",
+      "C. 34",
+      "D. The code does not compile because of line 13.",
+      "E. The code does not compile because of line 17.",
+      "F. None of the above."
+    ],
+    "answer": ["A"],
+    "explanation": "The code compiles and runs without issue, printing 3 at runtime and making option A correct. The default clause on line 17 is optional since all the enum values are accounted for and can be removed without changing the output."
+  },
+  {
+    "question": "What is the result of the following code snippet?",
+    "code": "3: int sing = 8, squawk = 2, notes = 0;\n4: while (sing > squawk) {\n5: sing--;\n6: squawk += 2;\n7: notes += sing + squawk;\n8: }\n9: System.out.println(notes);",
+    "options": [
+      "A. 11",
+      "B. 13",
+      "C. 23",
+      "D. 33",
+      "E. 50",
+      "F. The code will not compile because of line 7."
+    ],
+    "answer": ["C"],
+    "explanation": "Prior to the first iteration, sing = 8, squawk = 2, and notes = 0. After the iteration of the first loop, sing is updated to 7, squawk to 4, and notes to the sum of the new values for sing + squawk, 7 + 4 = 11. After the iteration of the second loop, sing is updated to 6, squawk to 6, and notes to the sum of itself plus the new values for sing + squawk, 11 + 6 + 6 = 23. On the third iteration of the loop, sing > squawk evaluates to false, as 6 > 6 is false. The loop ends and the most recent value of sing, 23, is output, so the correct answer is option C."
+  },
+  {
+    "question": "What is the result of calling getHatSize(9f) on the following code snippet?",
+    "code": "10: int getHatSize(Number measurement) {\n11: return switch (measurement) {\n12: case Double d -> 1 + d.intValue();\n13: case null -> 11;\n14: case !(Number n) -> 3 + n.intValue();\n15: case Float f when f < 10 -> 4 + f.intValue();\n16: };\n17: }",
+    "options": [
+      "A. 10",
+      "B. 11",
+      "C. 12",
+      "D. 13",
+      "E. The code does not compile because it is missing a default clause.",
+      "F. The code does not compile for a different reason."
+    ],
+    "answer": ["F"],
+    "explanation": "The code does not compile because case clause uses the logical complement operator (!), which is not permitted with pattern matching. If this was removed, then the code would still not compile, as this clause would dominate the case on line 15, leading to unreachable code on line 15. For this reason, option F is correct."
+  },
+  {
+    "question": "What is the output of the following code snippet?",
+    "code": "2: boolean keepGoing = true;\n3: int result = 15, meters = 10;\n4: do {\n5: meters--;\n6: if (meters == 8) keepGoing = false;\n7: result -= 2;\n8: } while keepGoing;\n9: System.out.println(result);",
+    "options": [
+      "A. 7",
+      "B. 9",
+      "C. 10",
+      "D. 11",
+      "E. 15",
+      "F. The code will not compile because of line 6.",
+      "G. The code does not compile for a different reason."
+    ],
+    "answer": ["G"],
+    "explanation": "This example may look complicated, but the code does not compile. Line 8 is missing the required parentheses around the boolean conditional expression. Since the code does not compile and it is not because of line 6, option G is the correct answer. If line 8 was corrected with parentheses, then the loop would be executed twice, and the output would be 11."
+  },
+  {
+    "question": "Which statements about the following code snippet are correct? (Choose all that apply.)",
+    "code": "for (var penguin : new int[2])\nSystem.out.println(penguin);\nvar ostrich = new Character[3];\nfor (var emu : ostrich)\nSystem.out.println(emu);\nList<Integer> parrots = new ArrayList<Integer>();\nfor (var macaw : parrots)\nSystem.out.println(macaw);",
+    "options": [
+      "A. The data type of penguin is Integer.",
+      "B. The data type of penguin is int.",
+      "C. The data type of emu is undefined.",
+      "D. The data type of emu is Character.",
+      "E. The data type of macaw is List.",
+      "F. The data type of macaw is Integer.",
+      "G. None of the above, as the code does not compile."
+    ],
+    "answer": ["B", "D", "F"],
+    "explanation": "The code does compile, making option G incorrect. In the first for-each loop, the right side of the for-each loop has a type of int[], so each element penguin has a type of int, making option B correct. In the second for-each loop, ostrich has a type of Character[], so emu has a data type of Character, making option D correct. In the last for-each loop, parrots has a data type of List<Integer>. Since the generic type of Integer is used in the List, macaw will have a data type of Integer, making option F correct."
+  },
+  {
+    "question": "What is the result of the following code snippet?",
+    "code": "final char a = 'A', e = 'E';\nchar grade = 'B';\nswitch (grade) {\ndefault:\ncase a:\ncase 'B': 'C': System.out.print(\"great \");\ncase 'D':\nSystem.out.print(\"good \"); break;\ncase e:\ncase 'F':\nSystem.out.print(\"not good \");\n}",
+    "options": [
+      "A. great",
+      "B. great good",
+      "C. good",
+      "D. not good",
+      "E. The code does not compile because the data type of one or more case clauses does not match the data type of the switch variable.",
+      "F. None of the above."
+    ],
+    "answer": ["F"],
+    "explanation": "The code does not compile, although not for the reason specified in option E. The second case clause contains invalid syntax. Each case clause must have the keyword case—in other words, you cannot chain them with a colon (:). For this reason, option F is the correct answer. This line could have been fixed to say case ’B’, ’C’ or by adding the case keyword before ’C’; then the rest of the code would have compiled and printed great good at runtime."
+  },
+  {
+    "question": "Given the following array, which code snippets print the elements in reverse order from how they are declared? (Choose all that apply.)",
+    "code": "char[] wolf = {'W', 'e', 'b', 'b', 'y'};",
+    "options": [
+      "A. int q = wolf.length;\nfor ( ; ; ) {\nSystem.out.print(wolf[--q]);\nif (q == 0) break;\n}",
+      "B. for (int m = wolf.length - 1; m >= 0; --m)\nSystem.out.print(wolf[m]);",
+      "C. for (int z = 0; z < wolf.length; z++)\nSystem.out.print(wolf[wolf.length - z]);",
+      "D. int x = wolf.length - 1;\nfor (int j = 0; x >= 0 && j == 0; x--)\nSystem.out.print(wolf[x]);",
+      "E. final int r = wolf.length;\nfor (int w = r - 1; r > -1; w = r - 1)\nSystem.out.print(wolf[w]);",
+      "F. for (int i = wolf.length; i > 0; --i)\nSystem.out.print(wolf[i]);",
+      "G. None of the above"
+    ],
+    "answer": ["A", "B", "D"],
+    "explanation": "To print items in the wolf array in reverse order, the code needs to start with wolf[wolf.length-1] and end with wolf[0]. Option A accomplishes this and is the first correct answer. Option B is also correct and is one of the most common ways a reverse loop is written. The termination condition is often m>=0 or m>-1, and both are correct. Options C and F each cause an ArrayIndexOutOfBoundsException at runtime since both read from wolf[wolf.length] first, with an index that is passed the length of the 0-based array wolf. The form of option C would be successful if the value was changed to wolf[wolf.length-z-1]. Option D is also correct, as the j is extraneous and can be ignored in this example. Finally, option E is incorrect and produces an infinite loop, as w is repeatedly set to r-1, in this case 4, on every loop iteration. Since the update statement has no effect after the first iteration, the condition is never met, and the loop never terminates."
+  },
+  {
+    "question": "What distinct numbers are printed when the following method is executed? (Choose all that apply.)",
+    "code": "private void countAttendees() {\nint participants = 4, animals = 2, performers = -1;\nwhile ((participants = participants + 1) < 10) {}\ndo {} while (animals++ <= 1);\nfor ( ; performers < 2; performers += 2) {}\nSystem.out.println(participants);\nSystem.out.println(animals);\nSystem.out.println(performers);\n}",
+    "options": [
+      "A. 6",
+      "B. 3",
+      "C. 4",
+      "D. 5",
+      "E. 10",
+      "F. 9",
+      "G. The code does not compile.",
+      "H. None of the above."
+    ],
+    "answer": ["B", "E"],
+    "explanation": "The code compiles without issue and prints two distinct numbers at runtime, so options G and H are incorrect. The first loop executes a total of five times, with the loop ending when participants has a value of 10. For this reason, option E is correct. In the second loop, animals starts out not less than or equal to 1, but since it is a do/while loop, it executes at least once. In this manner, animals takes on a value of 3 and the loop terminates, making option B correct. Finally, the last loop executes a total of two times, with performers starting with -1, going to 1 at the end of the first loop, and then ending with a value of 3 after the second loop, which breaks the loop. This makes option B a correct answer twice over."
+  },
+  {
+    "question": "What is the output of the following code snippet?",
+    "code": "2: double iguana = 0;\n3: do {\n4: int snake = 1;\n5: System.out.print(snake++ + \" \");\n6: iguana--;\n7: } while (snake <= 5);\n8: System.out.println(iguana);",
+    "options": [
+      "A. 1 2 3 4 -4.0",
+      "B. 1 2 3 4 -5.0",
+      "C. 1 2 3 4 5 -4.0",
+      "D. 0 1 2 3 4 5 -5.0",
+      "E. The code does not compile.",
+      "F. The code compiles but produces an infinite loop at runtime.",
+      "G. None of the above."
+    ],
+    "answer": ["E"],
+    "explanation": "The variable snake is declared within the body of the do/while statement, so it is out of scope on line 7. For this reason, option E is the correct answer. If snake were declared before line 3 with a value of 1, then the output would have been 1 2 3 4 5 -5.0, and option G would have been the correct answer."
+  },
+  {
+    "question": "Which statements, when inserted into the following blanks, allow the code to compile and run without entering an infinite loop? (Choose all that apply.)",
+    "code": "4: int height = 1;\n5: L1: while (height++ < 10) {\n6: long humidity = 12;\n7: L2: do {\n8: if (humidity-- % 12 == 0) ;\n9: int temperature = 30;\n10: L3: for ( ; ; ) {\n11: temperature++;\n12: if (temperature > 50) ;\n13: }\n14: } while (humidity > 4);\n15: }",
+    "options": [
+      "A. break L2 on line 8; continue L2 on line 12",
+      "B. continue on line 8; continue on line 12",
+      "C. break L3 on line 8; break L1 on line 12",
+      "D. continue L2 on line 8; continue L3 on line 12",
+      "E. continue L2 on line 8; continue L2 on line 12",
+      "F. None of the above, as the code contains a compiler error"
+    ],
+    "answer": ["A", "E"],
+    "explanation": "The most important thing to notice when reading this code is that the innermost loop is an infinite loop. Therefore, you are looking for solutions that skip the innermost loop entirely or that exit that loop. Option A is correct, as break L2 on line 8 causes the second inner loop to exit every time it is entered, skipping the innermost loop entirely. For option B, the first continue on line 8 causes the execution to skip the innermost loop on the first iteration of the second loop but not the second iteration of the second loop. The innermost loop is executed, and with continue on line 12, it produces an infinite loop at runtime, making option B incorrect. Option C is incorrect because it contains a compiler error. The label L3 is not visible outside its loop. Option D is incorrect, as it is equivalent to option B since the unlabeled break and continue apply to the nearest loop and therefore produce an infinite loop at runtime. Like option A, the continue L2 on line 8 allows the innermost loop to be executed the second time the second loop is called. The continue L2 on line 12 exits the infinite loop, though, causing control to return to the second loop. Since the first and second loops terminate, the code terminates, and option E is a correct answer."
+  },
+  {
+    "question": "A minimum of how many lines need to be corrected before the following method will compile?",
+    "code": "21: void findZookeeper(Integer id) {\n22: System.out.print(switch (id) {\n23: case 10 -> {\"Jane\";}\n24: case 20 -> {yield \"Lisa\";};\n25: case 30 -> \"Kelly\";\n26: case 30 -> \"Sarah\";\n27: default -> \"Unassigned\";\n28: });\n29: }",
+    "options": [
+      "A. Zero",
+      "B. One",
+      "C. Two",
+      "D. Three",
+      "E. Four",
+      "F. Five"
+    ],
+    "answer": ["D"],
+    "explanation": "Line 23 does not compile because it is missing a yield statement. Line 24 does not compile because it contains an extra semicolon at the end. Finally, lines 25 and 26 do not compile because they use the same case value. At least one of them would need to be changed for the code to compile. Since three lines need to be corrected, option D is correct."
+  }
+]

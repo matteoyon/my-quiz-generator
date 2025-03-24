@@ -1,0 +1,302 @@
+1. What is output by the following code?
+1: public class Fish {
+2:
+public static void main(String[] args) {
+3:
+int numFish = 4;
+4:
+String fishType = "tuna";
+5:
+String anotherFish = numFish + 1;
+6:
+System.out.println(anotherFish + " " + fishType);
+7:
+System.out.println(numFish + " " + 1);
+8: } }
+A. 4 1
+B. 5
+C. 5 tuna
+D. 5tuna
+E. 51tuna
+F. The code does not compile.
+2. Which of these array declarations are not legal?
+(Choose all that apply.)
+A. int[][] scores = new int[5][];
+B. Object[][][] cubbies = new Object[3][0][5];
+C. String beans[] = new beans[6];
+D. java.util.Date[] dates[] = new java.util.Date[2][];
+E. int[][] types = new int[];
+F. int[][] java = new int[][];
+3. Note that March 12, 2028, is the weekend when we
+spring forward, and November 5, 2028, is when we fall
+back for daylight saving time. Which of the following
+can fill in the blank without the code throwing an
+exception? (Choose all that apply.)
+var zone = ZoneId.of("US/Eastern");
+var date = ______________________;var time = LocalTime.of(2, 15);
+var z = ZonedDateTime.of(date, time, zone);
+A. LocalDate.of(2028, 3, 12)
+B. LocalDate.of(2028, 3, 40)
+C. LocalDate.of(2028, 11, 5)
+D. LocalDate.of(2028, 11, 6)
+E. LocalDate.of(2029, 2, 29)
+F. LocalDate.of(2028, MonthEnum.MARCH, 12);
+4. Which of the following are output by this code? (Choose
+all that apply.)
+3: var s = "Hello";
+4: var t = new String(s);
+5: if ("Hello".equals(s)) System.out.println("one");
+6: if (t == s) System.out.println("two");
+7: if (t.intern() == s) System.out.println("three");
+8: if ("Hello" == s) System.out.println("four");
+9: if ("Hello".intern() == t) System.out.println("five");
+A. one
+B. two
+C. three
+D. four
+E. five
+F. The code does not compile.
+G. None of the above.
+5. What is the result of the following code?
+7: var sb = new StringBuilder();
+8: sb.append("aaa").insert(1, "bb").insert(4, "ccc");
+9: System.out.println(sb);
+A. abbaacccB. abbaccca
+C. bbaaaccc
+D. bbaaccca
+E. An empty line.
+F. The code does not compile.
+6. How many of these lines contain a compiler error?
+23: double one = Math.pow(1, 2);
+24: int two = Math.round(1.0);
+25: float three = Math.random();
+26: var doubles = new double[] {one, two, three};
+A. 0
+B. 1
+C. 2
+D. 3
+E. 4
+7. Which of these statements is true of the two values?
+(Choose all that apply.)
+2025–08–28T05:00 GMT-04:00
+2025–08–28T09:00 GMT-06:00
+A. The first date/time is earlier.
+B. The second date/time is earlier.
+C. Both date/times are the same.
+D. The date/times are two hours apart.
+E. The date/times are six hours apart.
+F. The date/times are 10 hours apart.
+8. Which of the following return 5 when run
+independently? (Choose all that apply.)var string = "12345";
+var builder = new StringBuilder("12345");
+A. builder.charAt(4)
+B. builder.replace(2, 4, "6").charAt(3)
+C. builder.replace(2, 5, "6").charAt(2)
+D. string.charAt(5)
+E. string.length
+F. string.replace("123", "1").charAt(2)
+G. None of the above
+9. Which of the following are true about arrays? (Choose
+all that apply.)
+A. The first element is index 0.
+B. The first element is index 1.
+C. Arrays are fixed size.
+D. Arrays are immutable.
+E. Calling equals() on two different arrays containing
+the same primitive values always returns true.
+F. Calling equals() on two different arrays containing
+the same primitive values always returns false.
+G. Calling equals() on two different arrays containing
+the same primitive values can return true or false.
+10. How many of these lines contain a compiler error?
+23: int one = Math.min(5, 3);
+24: long two = Math.round(5.5);
+25: double three = Math.floor(6.6);
+26: var doubles = new double[] {one, two, three};
+A. 0
+B. 1C. 2
+D. 3
+E. 4
+11. What is the output of the following code?
+var date = LocalDate.of(2025, 4, 3);
+date.plusDays(2);
+date.plusHours(3);
+System.out.println(date.getYear() + " " + date.getMonth()
++ " " + date.getDayOfMonth());
+A. 2025 MARCH 4
+B. 2025 MARCH 6
+C. 2025 APRIL 3
+D. 2025 APRIL 5
+E. The code does not compile.
+F. A runtime exception is thrown.
+12. What is output by the following code ignoring any new
+lines in the ouput? (Choose all that apply.)
+var numbers = "012345678".indent(1);
+numbers = numbers.stripLeading();
+System.out.println(numbers.substring(1, 3));
+System.out.println(numbers.substring(7, 7));
+System.out.println(numbers.substring(7));
+A. 12
+B. 123
+C. 7
+D. 78
+E. A blank line.
+F. An exception is thrown.
+13. What is the result of the following code?public class Lion {
+public void roar(String roar1, StringBuilder roar2) {
+roar1.concat("!!!");
+roar2.append("!!!");
+}
+public static void main(String[] args) {
+var roar1 = "roar";
+var roar2 = new StringBuilder("roar");
+new Lion().roar(roar1, roar2);
+System.out.println(roar1 + " " + roar2);
+} }
+A. roar roar
+B. roar roar!!!
+C. roar!!! Roar
+D. roar!!! Roar!!!
+E. An exception is thrown.
+F. The code does not compile.
+14. Given the following, which can correctly fill in the blank
+allowing the code to compile? (Choose all that apply.)
+var date = LocalDate.now();
+var time = LocalTime.now();
+var dateTime = date.______(time);
+var zoneId = ZoneId.systemDefault();
+var zonedDateTime = ZonedDateTime.of(dateTime, zoneId);
+Instant instant = ___________________________;
+A. asTime()
+B. atTime()
+C. withTime()
+D. dateTime.toInstant()
+E. new Instant()
+F. zonedDateTime.toInstant()15. What is the output of the following? (Choose all that
+apply.)
+var arr = new String[] { "PIG", "pig", "123"};
+Arrays.sort(arr);
+System.out.println(Arrays.toString(arr));
+System.out.println(Arrays.binarySearch(arr, "Pippa"));
+A. [pig, PIG, 123]
+B. [PIG, pig, 123]
+C. [123, PIG, pig]
+D. [123, pig, PIG]
+E. -3
+F. -2
+G. The results of binarySearch() are undefined in this
+example.
+16. Which of these statements are true? (Choose all that
+apply.)
+var letters = new StringBuilder("abcdefg");
+A. letters.substring(1, 2) returns a single-character
+String.
+B. letters.substring(2, 2) returns a single-character
+String.
+C. letters.substring(6, 5) returns a single-character
+String.
+D. letters.substring(6, 6) returns a single-character
+String.
+E. letters.substring(1, 2) throws an exception.
+F. letters.substring(2, 2) throws an exception.
+G. letters.substring(6, 5) throws an exception.H. letters.substring(6, 6) throws an exception.
+17. What is the result of the following code? (Choose all
+that apply.)
+13: String s1 = """
+14:
+purr""";
+15: String s2 = "";
+16:
+17: s1.toUpperCase();
+18: s1.trim();
+19: s1.substring(1, 3);
+20: s1 += "two";
+21:
+22: s2 += 2;
+23: s2 += 'c';
+24: s2 += false;
+25:
+26: if ( s2 == "2cfalse") System.out.println("==");
+27: if ( s2.equals("2cfalse"))
+System.out.println("equals");
+28: System.out.println(s1.length());
+A. 2
+B. 4
+C. 7
+D. 10
+E. ==
+F. equals
+G. An exception is thrown.
+H. The code does not compile.
+18. Which of the following fill in the blank to print a
+positive integer? (Choose all that apply.)
+String[] s1 = { "Camel", "Peacock", "Llama"};
+String[] s2 = { "Camel", "Llama", "Peacock"};
+String[] s3 = { "Camel"};String[] s4 = { "Camel", null};
+System.out.println(Arrays.)____________________________;
+A. compare(s1, s2)
+B. mismatch(s1, s2)
+C. compare(s3, s4)
+D. mismatch (s3, s4)
+E. compare(s4, s4)
+F. mismatch (s4, s4)
+19. Note that March 12, 2028 is the weekend that clocks
+spring ahead for daylight saving time. What is the
+output of the following? (Choose all that apply.)
+var date = LocalDate.of(2028, Month.MARCH, 12);
+var time = LocalTime.of(1, 30);
+var zone = ZoneId.of("US/Eastern");
+var dateTime1 = ZonedDateTime.of(date, time, zone);
+var dateTime2 = dateTime1.plus(1, ChronoUnit.HOURS);
+long diff = ChronoUnit.HOURS.between(dateTime1, dateTime2);
+int hour = dateTime2.getHour();
+boolean offset = dateTime1.getOffset()
+== dateTime2.getOffset();
+System.out.println("diff = " + diff);
+System.out.println("hour = " + hour);
+System.out.println("offset = " + offset);
+A. diff = 1
+B. diff = 2
+C. hour = 2
+D. hour = 3
+E. offset = true
+F. The code does not compile.
+G. A runtime exception is thrown.20. Which of the following can fill in the blank to print avaJ?
+(Choose all that apply.)
+3: var puzzle = new StringBuilder("Java");
+4: puzzle._________________________;
+5: System.out.println(puzzle);
+A. reverse()
+B. append("vaJ$").substring(0, 4)
+C. append("vaJ$").delete(0,
+3).deleteCharAt(puzzle.length() - 1)
+D. append("vaJ$").delete(0,
+3).deleteCharAt(puzzle.length())
+E. None of the above
+21. What is the output of the following code?
+var date = LocalDate.of(2025, Month.APRIL, 30);
+date.plusDays(2);
+date.plusYears(3);
+System.out.println(date.getYear() + " " + date.getMonth()
++ " " + date.getDayOfMonth());
+A. 2025 APRIL 30
+B. 2025 MAY 2
+C. 2028 APRIL 2
+D. 2028 APRIL 30
+E. 2028 MAY 2
+F. The code does not compile.
+G. A runtime exception is thrown.
+22. What is the output of the following?
+var result = LocalDate.of(2025, Month.OCTOBER, 31)
+.plusYears(1)
+.plusMonths(-5)
+.plusMonths(1).withYear(2026)
+.atTime(LocalTime.of(13, 4));
+System.out.println(result);
+A. 2025-06-30T13:04
+B. 2026-04-304
+C. 2026-04-30T13:04
+D. 2026-06-30T
+E. 2026-06-30T13:04
+F. The code does not compile.
+G. A runtime exception is thrown.

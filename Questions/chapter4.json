@@ -1,0 +1,227 @@
+[
+  {
+    "question": "What is output by the following code?",
+    "code": "1: public class Fish {\n2: public static void main(String[] args) {\n3: int numFish = 4;\n4: String fishType = \"tuna\";\n5: String anotherFish = numFish + 1;\n6: System.out.println(anotherFish + \" \" + fishType);\n7: System.out.println(numFish + \" \" + 1);\n8: } }",
+    "options": [
+      "A. 4 1",
+      "B. 5",
+      "C. 5 tuna",
+      "D. 5tuna",
+      "E. 51tuna",
+      "F. The code does not compile."
+    ],
+    "answer": ["F"],
+    "explanation": "Line 5 does not compile. This question is checking to see whether you are paying attention to the types. numFish is an int, and 1 is an int. Therefore, we use numeric addition and get 5. The problem is that we can’t store an int in a String variable. Suppose line 5 said String anotherFish = numFish + 1 + \"\";. In that case, the answers would be option A and option C. The variable defined on line 5 would be the string \"5\", and both output statements would use concatenation."
+  },
+  {
+    "question": "Which of these array declarations are not legal? (Choose all that apply.)",
+    "options": [
+      "A. int[][] scores = new int[5][];",
+      "B. Object[][][] cubbies = new Object[3][0][5];",
+      "C. String beans[] = new beans[6];",
+      "D. java.util.Date[] dates[] = new java.util.Date[2][];",
+      "E. int[][] types = new int[];",
+      "F. int[][] java = new int[][];"
+    ],
+    "answer": ["C", "E", "F"],
+    "explanation": "Option C uses the variable name as if it were a type, which is clearly illegal. Options E and F don’t specify any size. Although it is legal to leave out the size for later dimensions of an array of arrays, the first one is required. Option A declares a legal 2D array. Option B declares a legal 3D array. Option D declares a legal 2D array. Remember that it is normal to see classes on the exam you might not have learned. You aren’t expected to know anything about them."
+  },
+  {
+    "question": "Note that March 12, 2028, is the weekend when we spring forward, and November 5, 2028, is when we fall back for daylight saving time. Which of the following can fill in the blank without the code throwing an exception? (Choose all that apply.)",
+    "code": "var zone = ZoneId.of(\"US/Eastern\");\nvar date = ______________________;\nvar time = LocalTime.of(2, 15);\nvar z = ZonedDateTime.of(date, time, zone);",
+    "options": [
+      "A. LocalDate.of(2028, 3, 12)",
+      "B. LocalDate.of(2028, 3, 40)",
+      "C. LocalDate.of(2028, 11, 5)",
+      "D. LocalDate.of(2028, 11, 6)",
+      "E. LocalDate.of(2029, 2, 29)",
+      "F. LocalDate.of(2028, MonthEnum.MARCH, 12);"
+    ],
+    "answer": ["A", "C", "D"],
+    "explanation": "Option B throws an exception because there is no March 40. Option E also throws an exception because 2029 isn’t a leap year and therefore has no February 29. Option F doesn’t compile because the enum should be named Month, rather than MonthEnum. Option D is correct because it is just a regular date and has nothing to do with daylight saving time. Options A and C are correct because Java is smart enough to adjust for daylight saving time."
+  },
+  {
+    "question": "Which of the following are output by this code? (Choose all that apply.)",
+    "code": "3: var s = \"Hello\";\n4: var t = new String(s);\n5: if (\"Hello\".equals(s)) System.out.println(\"one\");\n6: if (t == s) System.out.println(\"two\");\n7: if (t.intern() == s) System.out.println(\"three\");\n8: if (\"Hello\" == s) System.out.println(\"four\");\n9: if (\"Hello\".intern() == t) System.out.println(\"five\");",
+    "options": [
+      "A. one",
+      "B. two",
+      "C. three",
+      "D. four",
+      "E. five",
+      "F. The code does not compile.",
+      "G. None of the above."
+    ],
+    "answer": ["A", "C", "D"],
+    "explanation": "The code compiles fine. Line 3 points to the String in the string pool. Line 4 calls the String constructor explicitly and is therefore a different object than s. Line 5 checks for object equality, which is true, and so it prints one. Line 6 uses object reference equality, which is not true since we have different objects. Line 7 calls intern(), which returns the value from the string pool and is therefore the same reference as s. Line 8 also compares references but is true since both references point to the object from the string pool. Finally, line 9 is a trick. The string Hello is already in the string pool, so calling intern() does not change anything. The reference t is a different object, so the result is still false. Therefore, options A, C, and D are correct."
+  },
+  {
+    "question": "What is the result of the following code?",
+    "code": "7: var sb = new StringBuilder();\n8: sb.append(\"aaa\").insert(1, \"bb\").insert(4, \"ccc\");\n9: System.out.println(sb);",
+    "options": [
+      "A. abbaaccc",
+      "B. abbaccca",
+      "C. bbaaaccc",
+      "D. bbaaccca",
+      "E. An empty line.",
+      "F. The code does not compile."
+    ],
+    "answer": ["B"],
+    "explanation": "This example uses method chaining. After the call to append(), sb contains \"aaa\". That result is passed to the first insert() call, which inserts at index 1. At this point, sb contains abbaa. That result is passed to the final insert(), which inserts at index 4, resulting in abbaccca. Therefore, option B is the answer."
+  },
+  {
+    "question": "How many of these lines contain a compiler error?",
+    "code": "23: double one = Math.pow(1, 2);\n24: int two = Math.round(1.0);\n25: float three = Math.random();\n26: var doubles = new double[] {one, two, three};",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. 3",
+      "E. 4"
+    ],
+    "answer": ["C"],
+    "explanation": "Remember to watch return types on math operations. One of the tricks is line 24. The round() method returns an int when called with a float. However, we are calling it with a double, so it returns a long. The other trick is line 25. The random() method returns a double. Since two lines have a compiler error, option C is the answer."
+  },
+  {
+    "question": "Which of these statements is true of the two values? (Choose all that apply.)",
+    "code": "2025–08–28T05:00 GMT-04:00\n2025–08–28T09:00 GMT-06:00",
+    "options": [
+      "A. The first date/time is earlier.",
+      "B. The second date/time is earlier.",
+      "C. Both date/times are the same.",
+      "D. The date/times are two hours apart.",
+      "E. The date/times are six hours apart.",
+      "F. The date/times are 10 hours apart."
+    ],
+    "answer": ["A", "E"],
+    "explanation": "When dealing with time zones, it is best to convert to GMT first by subtracting the time zone. Remember that subtracting a negative is like adding. The first date/time is 9:00 GMT, and the second is 15:00 GMT. Therefore, the first one is earlier by six hours. Therefore, options A and E are correct."
+  },
+  {
+    "question": "Which of the following return 5 when run independently? (Choose all that apply.)",
+    "code": "var string = \"12345\";\nvar builder = new StringBuilder(\"12345\");",
+    "options": [
+      "A. builder.charAt(4)",
+      "B. builder.replace(2, 4, \"6\").charAt(3)",
+      "C. builder.replace(2, 5, \"6\").charAt(2)",
+      "D. string.charAt(5)",
+      "E. string.length",
+      "F. string.replace(\"123\", \"1\").charAt(2)",
+      "G. None of the above"
+    ],
+    "answer": ["A", "B", "F"],
+    "explanation": "Remember that indexes are zero-based, which means index 4 corresponds to 5, and option A is correct. For option B, the replace() method starts the replacement at index 2 and ends before index 4. This means two characters are replaced, and charAt(3) is called on the intermediate value of 1265. The character at index 3 is 5, making option B correct. Option C is similar, making the intermediate value 126 and returning 6. Option D results in an exception since there is no character at index 5. Option E is incorrect. It does not compile because the parentheses for the length() method are missing. Finally, option F’s replace results in the intermediate value 145. The character at index 2 is 5, so option F is correct."
+  },
+  {
+    "question": "Which of the following are true about arrays? (Choose all that apply.)",
+    "options": [
+      "A. The first element is index 0.",
+      "B. The first element is index 1.",
+      "C. Arrays are fixed size.",
+      "D. Arrays are immutable.",
+      "E. Calling equals() on two different arrays containing the same primitive values always returns true.",
+      "F. Calling equals() on two different arrays containing the same primitive values always returns false.",
+      "G. Calling equals() on two different arrays containing the same primitive values can return true or false."
+    ],
+    "answer": ["A", "C", "F"],
+    "explanation": "Arrays are zero-indexed, making option A correct and option B incorrect. They are not able to change size, which is option C. The values can be changed, making option D incorrect. An array does not override equals(), so it uses object equality. Since two different objects are not equal, option F is correct, and options E and G are incorrect."
+  },
+  {
+    "question": "How many of these lines contain a compiler error?",
+    "code": "23: int one = Math.min(5, 3);\n24: long two = Math.round(5.5);\n25: double three = Math.floor(6.6);\n26: var doubles = new double[] {one, two, three};",
+    "options": [
+      "A. 0",
+      "B. 1",
+      "C. 2",
+      "D. 3",
+      "E. 4"
+    ],
+    "answer": ["A"],
+    "explanation": "All of these lines compile. The min() and floor() methods return the same type passed in: int and double, respectively. The round() method returns a long when called with a double. Option A is correct since the code compiles."
+  },
+  {
+    "question": "What is the output of the following code?",
+    "code": "var date = LocalDate.of(2025, 4, 3);\ndate.plusDays(2);\ndate.plusHours(3);\nSystem.out.println(date.getYear() + \" \" + date.getMonth() + \" \" + date.getDayOfMonth());",
+    "options": [
+      "A. 2025 MARCH 4",
+      "B. 2025 MARCH 6",
+      "C. 2025 APRIL 3",
+      "D. 2025 APRIL 5",
+      "E. The code does not compile.",
+      "F. A runtime exception is thrown."
+    ],
+    "answer": ["E"],
+    "explanation": "A LocalDate does not have a time element. Therefore, there is no method to add hours, making option E the answer."
+  },
+  {
+    "question": "What is the output of the following code?",
+    "code": "var date = LocalDate.of(2025, Month.APRIL, 30);\ndate.plusDays(2);\ndate.plusYears(3);\nSystem.out.println(date.getYear() + \" \" + date.getMonth() + \" \" + date.getDayOfMonth());",
+    "options": [
+      "A. 2025 APRIL 30",
+      "B. 2025 MAY 2",
+      "C. 2028 APRIL 2",
+      "D. 2028 APRIL 30",
+      "E. 2028 MAY 2",
+      "F. The code does not compile.",
+      "G. A runtime exception is thrown."
+    ],
+    "answer": ["A"],
+    "explanation": "The date starts out as April 30, 2025. Since dates are immutable and the plus methods’ return values are ignored, the result is unchanged. Therefore, option A is correct."
+  },
+  {
+    "question": "What is the output of the following?",
+    "code": "var result = LocalDate.of(2025, Month.OCTOBER, 31)\n.plusYears(1)\n.plusMonths(-5)\n.plusMonths(1).withYear(2026)\n.atTime(LocalTime.of(13, 4));\nSystem.out.println(result);",
+    "options": [
+      "A. 2025-06-30T13:04",
+      "B. 2026-04-30",
+      "C. 2026-04-30T13:04",
+      "D. 2026-06-30",
+      "E. 2026-06-30T13:04",
+      "F. The code does not compile.",
+      "G. A runtime exception is thrown."
+    ],
+    "answer": ["E"],
+    "explanation": "The code first creates a date of 2025-10-31. The chaining in the output is valid resulting in interim states of 2026-10-31, followed by 2026-05-31, then 2026-06-30, then 2026-06-30, and finally the result of 2026-06-30T13:04."
+  },
+  {
+    "question": "Which of the following fill in the blank to print a positive integer? (Choose all that apply.)",
+    "code": "String[] s1 = { \"Camel\", \"Peacock\", \"Llama\"};\nString[] s2 = { \"Camel\", \"Llama\", \"Peacock\"};\nString[] s3 = { \"Camel\"};\nString[] s4 = { \"Camel\", null};\nSystem.out.println(Arrays.____________________________);",
+    "options": [
+      "A. compare(s1, s2)",
+      "B. mismatch(s1, s2)",
+      "C. compare(s3, s4)",
+      "D. mismatch(s3, s4)",
+      "E. compare(s4, s4)",
+      "F. mismatch(s4, s4)"
+    ],
+    "answer": ["A", "B", "D"],
+    "explanation": "The compare() method returns a positive integer when the arrays are different and the first is larger. This is the case for option A since the s2 element at index 1 comes first alphabetically. It is not the case for option C because the s4 is longer or for option E because the arrays are the same. The mismatch() method returns a positive integer when the arrays are different in a position index 1 or greater. This is the case for options B and D since the difference is at index 1. It is not the case for option F because there is no difference."
+  },
+  {
+    "question": "Note that March 12, 2028 is the weekend that clocks spring ahead for daylight saving time. What is the output of the following? (Choose all that apply.)",
+    "code": "var date = LocalDate.of(2028, Month.MARCH, 12);\nvar time = LocalTime.of(1, 30);\nvar zone = ZoneId.of(\"US/Eastern\");\nvar dateTime1 = ZonedDateTime.of(date, time, zone);\nvar dateTime2 = dateTime1.plus(1, ChronoUnit.HOURS);\nlong diff = ChronoUnit.HOURS.between(dateTime1, dateTime2);\nint hour = dateTime2.getHour();\nboolean offset = dateTime1.getOffset() == dateTime2.getOffset();\nSystem.out.println(\"diff = \" + diff);\nSystem.out.println(\"hour = \" + hour);\nSystem.out.println(\"offset = \" + offset);",
+    "options": [
+      "A. diff = 1",
+      "B. diff = 2",
+      "C. hour = 2",
+      "D. hour = 3",
+      "E. offset = true",
+      "F. The code does not compile.",
+      "G. A runtime exception is thrown."
+    ],
+    "answer": ["A", "D"],
+    "explanation": "The dateTime1 object has a time of 1:30 per initialization. The dateTime2 object is an hour later. However, there is no 2:30 when springing ahead, setting the time to 3:30. Option A is correct because it is an hour later. Option D is also correct because the hour of the new time is 3. Option E is not correct because we have changed the time zone offset due to daylight saving time."
+  },
+  {
+    "question": "Which of the following can fill in the blank to print avaJ? (Choose all that apply.)",
+    "code": "var puzzle = new StringBuilder(\"Java\");\npuzzle._________________________;\nSystem.out.println(puzzle);",
+    "options": [
+      "A. reverse()",
+      "B. append(\"vaJ$\").substring(0, 4)",
+      "C. append(\"vaJ$\").delete(0, 3).deleteCharAt(puzzle.length() - 1)",
+      "D. append(\"vaJ$\").delete(0, 3).deleteCharAt(puzzle.length())",
+      "E. None of the above"
+    ],
+    "answer": ["A", "C"],
+    "explanation": "The reverse() method is the easiest way of reversing the characters in a StringBuilder; therefore, option A is correct. In option B, substring() returns a String, which is not stored anywhere. Option C uses method chaining. First, it creates the value \"JavavaJ$\". Then, it removes the first three characters, resulting in \"avaJ$\". Finally, it removes the last character, resulting in \"avaJ\". Option D throws an exception because you cannot delete the character after the last index. Remember that deleteCharAt() uses indexes that are zero-based, and length() counts the number of characters rather than the index."
+  }
+]
