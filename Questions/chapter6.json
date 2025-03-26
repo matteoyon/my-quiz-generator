@@ -53,7 +53,7 @@
   },
   {
     "id": 4,
-    "question": "What is the output of the following program?\n1:\n2:\n3:\n4:\n5:\n6:\nclass Mammal {\nprivate void sneeze() {}\npublic Mammal(int age) {\nSystem.out.print(\"Mammal\");\n} }\npublic class Platypus extends Mammal {\n7:\n8:\n9:\n10:\n11:\n12:\n13:\nint sneeze() { return 1; }\npublic Platypus() {\nSystem.out.print(\"Platypus\");\n}\npublic static void main(String[] args) {\nnew Mammal(5);\n} }",
+    "question": "What is the output of the following program?\n1: class Mammal {\n2: private void sneeze() {}\n3: public Mammal(int age) {\n4: System.out.print(\"Mammal\");\n5: } }\n6: public class Platypus extends Mammal {\n7: int sneeze() { return 1; }\n8: public Platypus() {\n9: System.out.print(\"Platypus\");\n10: }\n11: public static void main(String[] args) {\n12: new Mammal(5);\n13: } }",
     "options": [
       "A. Platypus",
       "B. Mammal",
