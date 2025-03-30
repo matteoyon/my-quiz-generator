@@ -16,7 +16,9 @@ func RunQuiz(questions []Question, quizLength int) {
 	instanceQuestions := []Question{}
 
 	for range quizLength {
-		instanceQuestions = append(instanceQuestions, questions[rand.Intn(len(questions))])
+		questionIndex := rand.Intn(len(questions))
+		instanceQuestions = append(instanceQuestions, questions[questionIndex])
+		questions = append(questions[:questionIndex], questions[questionIndex+1:]...)
 	}
 
 	for i, q := range instanceQuestions {

@@ -28,7 +28,7 @@ func main() {
 		}
 		allQuestions = loadAllQuestionsFromFolder(os.Args[3])
 	} else {
-		allQuestions = loadSpecificQuestions(os.Args[3:])
+		allQuestions = loadSpecificQuestions(os.Args[2:])
 	}
 
 	quiz.RunQuiz(allQuestions, quizLength)
