@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 1301,
     "question": "1. Given the following code snippet, which options correctly create a parallel stream? (Choose all that apply.)\nvar c = List.of(19, 66);\nvar s = ThreadLocalRandom.current().doubles();\nvar p = ________________;",
     "options": [
       "A. new ParallelStream(s)",
@@ -17,7 +17,7 @@
     "explanation": "1. D, F. There is no such class within the Java API called ParallelStream, so options A and E are incorrect. The method defined in the Stream class to create a parallel stream from an existing stream is parallel(); therefore, option F is correct, and option C is incorrect. The method defined in the Collection class to create a parallel stream from a collection is parallelStream(); therefore, option D is correct."
   },
   {
-    "id": 2,
+    "id": 1302,
     "question": "2. Given that the sum of the numbers from 1 (inclusive) to 10 (exclusive) is 45, what are the possible results of executing the following program? (Choose all that apply.)\n1: import java.util.concurrent.locks.*;\n2: import java.util.stream.*;\n3: public class Bank {\n4:     private Lock vault = new ReentrantLock();\n5:     private int total = 0;\n6:     public void deposit(int value) {\n7:         try {\n8:             vault.tryLock();\n9:             total += value;\n10:        } finally { vault.unlock(); }\n11:    }\n12:    public static void main(String[] unused) {\n13:        var bank = new Bank();\n14:        IntStream.range(1, 10).parallel()\n15:            .forEach(s -> bank.deposit(s));\n16:        System.out.println(bank.total);\n17:    }\n18: }",
     "options": [
       "A. 45 is printed.",
@@ -33,7 +33,7 @@
     "explanation": "2. A, D. The tryLock() method returns immediately with a value of false if the lock cannot be acquired. Unlike lock(), it does not wait for a lock to become available. This code fails to check the return value on line 8, resulting in the protected code being entered regardless of whether the lock is obtained. In some executions (when tryLock() returns true on every call), the code will complete successfully and print 45 at runtime, making option A correct. On other executions (when tryLock() returns false at least once), the unlock() method on line 10 will throw an IllegalMonitorStateException at runtime, making option D correct."
   },
   {
-    "id": 3,
+    "id": 1303,
     "question": "3. Which of the following statements about the Callable call() and Runnable run() methods are correct? (Choose all that apply.)\nA. Both methods return void.\nB. Both can throw unchecked exceptions.\nC. Both can be implemented with lambda expressions.\nD. Runnable returns a generic type.\nE. Both can throw checked exceptions.\nF. Callable returns a generic type.",
     "options": [
       "A. Both methods return void.",
@@ -51,7 +51,7 @@
     "explanation": "3. B, C, F. Runnable returns void and Callable returns a generic type, making options A and D incorrect and option F correct. All methods are capable of throwing unchecked exceptions, so option B is correct. Only Callable is capable of throwing checked exceptions, so option E is incorrect. Both Runnable and Callable are functional interfaces that can be implemented with a lambda expression, so option C is also correct."
   },
   {
-    "id": 4,
+    "id": 1304,
     "question": "4. Which lines need to be changed to make the code compile?\ntry (ExecutorService service = // w1\nExecutors.newSingleThreadScheduledExecutor()) {\n    service.scheduleWithFixedDelay(() -> {\n        System.out.println(\"Open Zoo\");\n        return null; // w2\n    }, 0, 1, TimeUnit.MINUTES);\n    var result = service.submit(() ->\n        // w3\n        System.out.println(\"Wake Staff\"));\n    System.out.println(result.get());\n}",
     "options": [
       "A. Only line w1.",
@@ -68,7 +68,7 @@
     "explanation": "4. D. The first problem is that although a ScheduledExecutorService is created, it is assigned to an ExecutorService. The type of the variable on line w1 would have to be updated to ScheduledExecutorService for the code to compile. The second problem is that scheduleWithFixedDelay() supports only Runnable, not Callable, and any attempt to return a value is invalid in a Runnable lambda expression; therefore, line w2 will also not compile, and option D is correct."
   },
   {
-    "id": 5,
+    "id": 1305,
     "question": "5. What statement about the following code is true?\nvar value1 = new AtomicLong(0);\nfinal long[] value2 = {0};\nIntStream.iterate(1, i -> 1).limit(100).parallel()\n    .forEach(i -> value1.incrementAndGet());\nIntStream.iterate(1, i -> 1).limit(100).parallel()\n    .forEach(i -> ++value2[0]);\nSystem.out.println(value1 + \" \" + value2[0]);",
     "options": [
       "A. It outputs 100 100.",
@@ -85,7 +85,7 @@
     "explanation": "5. C. The code compiles and runs without throwing an exception or entering an infinite loop, so options D, E, and F are incorrect. The key here is that the increment operator ++ is not atomic. While the first part of the output will always be 100, the second part is nondeterministic. It may output any value from 1 to 100, because the threads can overwrite each other’s work. Therefore, option C is the correct answer, and options A and B are incorrect."
   },
   {
-    "id": 6,
+    "id": 1306,
     "question": "6. Which statements about the following code are correct? (Choose all that apply.)\nvar data = List.of(2, 5, 1, 9, 8);\ndata.stream().parallel()\n    .mapToInt(s -> s)\n    .peek(System.out::print)\n    .forEachOrdered(System.out::print);",
     "options": [
       "A. The peek() method will print the entries in the sorted order: 12589.",
@@ -103,7 +103,7 @@
     "explanation": "6. C, E. The code compiles, so option G is incorrect. The peek() method on a parallel stream will process the elements concurrently, so the order cannot be determined ahead of time, and option C is correct. The forEachOrdered() method will process the elements in the order in which they are stored in the stream, making option E correct. None of the methods sort the elements, so options A and D are incorrect."
   },
   {
-    "id": 7,
+    "id": 1307,
     "question": "7. Fill in the blanks: __________ occur(s) when two or more threads are blocked forever but both appear active.\n_______ occur(s) when two or more threads try to complete a related task at the same time, resulting in invalid or unexpected data.",
     "options": [
       "A. Livelock, Deadlock",
@@ -119,7 +119,7 @@
     "explanation": "7. D. Livelock occurs when two or more threads are conceptually blocked forever, although they are each still active and trying to complete their task. A race condition is an undesirable result that occurs when two tasks that should have been completed sequentially are completed at the same time, resulting in invalid or unexpected data. For these reasons, option D is correct."
   },
   {
-    "id": 8,
+    "id": 1308,
     "question": "8. Assuming this class is accessed by only a single thread at a time, what is the result of calling the countIceCreamFlavors() method?\nimport java.util.stream.LongStream;\npublic class Flavors {\n    private static int counter;\n    public static void countIceCreamFlavors() {\n        counter = 0;\n        Runnable task = () -> counter++;\n        LongStream.range(0, 500)\n            .forEach(m -> Thread.ofPlatform()\n                .priority(1)\n                .unstarted(task)\n                .run());\n        System.out.println(counter);\n    }\n}",
     "options": [
       "A. The method consistently prints a number less than 500.",
@@ -135,7 +135,7 @@
     "explanation": "8. B. The method consistently prints 500 at runtime. Note that if start() had been used instead of run() (or the stream was parallel), then the output would be indeterminate; however, as written, each task is executed synchronously, so the correct answer is option B."
   },
   {
-    "id": 9,
+    "id": 1309,
     "question": "9. Which are true of ExecutorService? (Choose all that apply.)\nA. If a task is submitted when no threads are available, the executor discards the task without completing it.\nB. If a task is submitted when no threads are available, the executor adds the task to an internal queue and completes when there is an available thread.\nC. If a task is submitted when no threads are available, the thread submitting the task waits on the submit call until a thread is available before continuing.\nD. Platform threads can be pooled using ExecutorService, but not virtual threads.\nE. Virtual threads can be pooled using ExecutorService, but not platform threads.\nF. Both platform threads and virtual threads can be pooled using ExecutorService.",
     "options": [
       "A. If a task is submitted when no threads are available, the executor discards the task without completing it.",
@@ -152,7 +152,7 @@
     "explanation": "9. B, D. If a task is submitted to a thread executor and the thread executor does not have any available threads, the call to the task will return immediately with the task being queued internally by the thread executor. For this reason, option B is correct. Additionally, only platform threads can be pooled, making option D correct as well. Virtual threads are lightweight so they don’t benefit from pooling."
   },
   {
-    "id": 10,
+    "id": 1310,
     "question": "10. What is the result of executing the following code snippet?\nSequencedCollection<Integer> lions = new ArrayList<>(List.of(1, 2, 3));\nSequencedCollection<Integer> tigers = new CopyOnWriteArrayList<>(lions);\nSet<Integer> bears = new ConcurrentSkipListSet<>();\nbears.addAll(lions);\nfor (Integer item: tigers) tigers.add(4); // x1\nfor (Integer item: bears) bears.add(5); // x2\nSystem.out.println(lions.size() + \" \" + tigers.size() + \" \" + bears.size());",
     "options": [
       "A. It outputs 3 6 4.",
@@ -169,7 +169,7 @@
     "explanation": "10. A. The code compiles without issue. The CopyOnWriteArrayList class is designed to preserve the original list on iteration, so the first loop is executed exactly three times and, in the process, increases the size of tigers to six elements. The ConcurrentSkipListSet class allows modifications, and since it enforces the uniqueness of its elements, the value 5 is added only once, leading to a total of four elements in bears. Therefore, the program prints 3 6 4."
   },
   {
-    "id": 11,
+    "id": 1311,
     "question": "11. What statement about the following code is true?\nInteger i1 = List.of(1, 2, 3, 4, 5).stream().findAny().get();\nsynchronized(i1) { // y1\nInteger i2 = List.of(6, 7, 8, 9, 10)\n.parallelStream()\n.sorted()\n.findAny().get(); // y2\nSystem.out.println(i1 + \" \" + i2);\n}",
     "options": [
       "A. The first value printed is always 1.",
@@ -186,7 +186,7 @@
     "explanation": "11. F. The code compiles and runs without issue, so options C, D, E, and G are incorrect. There are two important things to notice. First, synchronizing on the first variable doesn’t impact the results of the code. Second, sorting on a parallel stream does not mean that findAny() will return the first record. The findAny() method will return the value from the first thread that retrieves a record. Therefore, the output is not guaranteed, and option F is correct. Option A looks correct, but even on serial streams, findAny() is free to select any element."
   },
   {
-    "id": 12,
+    "id": 1312,
     "question": "12. Assuming each call to takeNap() takes five seconds to execute without throwing an exception, what is the expected result of executing the following code snippet?\n(Choose all that apply.)\npublic void shutdown() throws InterruptedException {\n    var service = Executors.newFixedThreadPool(4);\n    try {\n        service.execute(() -> takeNap());\n        service.execute(() -> takeNap());\n        service.execute(() -> takeNap());\n    } finally {\n        service.shutdown();\n    }\n    service.awaitTermination(2, TimeUnit.SECONDS);\n    System.out.println(\"DONE!\");\n}\n\npublic void refactored() {\n    try (var service = Executors.newFixedThreadPool(4)) {\n        service.execute(() -> takeNap());\n        service.execute(() -> takeNap());\n        service.execute(() -> takeNap());\n    }\n    System.out.println(\"DONE!\");\n}",
     "options": [
       "A. shutdown() will pause for approximately 2 seconds and then print DONE!.",
@@ -205,7 +205,7 @@
     "explanation": "12. A, E. The shutdown() method submits three tasks to an ExecutorService, shuts it down, and then waits for the results. The awaitTermination() method waits a specified amount of time for all tasks to complete and the service to finish shutting down. Since each five-second task is still executing, the awaitTermination() method will return with a value of false after two seconds but not throw an exception, making option A correct. The refactored() method uses a try-with-resources, which allows the tasks to gracefully finish, making option E correct."
   },
   {
-    "id": 13,
+    "id": 1313,
     "question": "13. What statement about the following code is true?\nSystem.out.print(List.of(\"duck\",\"flamingo\",\"pelican\")\n.parallelStream().parallel()\n// q1\n.reduce(0,\n(c1, c2) -> c1.length() + c2.length(), // q2\n(s1, s2) -> s1 + s2);\n// q3",
     "options": [
       "A. It compiles and runs without issue, outputting the total length of all strings in the stream.",
@@ -221,7 +221,7 @@
     "explanation": "13. C. The code does not compile, so options A and E are incorrect. The problem here is that c1 is an Integer and c2 is a String, so the code fails to combine on line q2, since calling length() on an Integer is not allowed, and option C is correct. The rest of the lines compile without issue. Note that calling parallel() on an already parallel stream is allowed, and it may return the same object."
   },
   {
-    "id": 14,
+    "id": 1314,
     "question": "14. What statements about the following code snippet are true? (Choose all that apply.)\nObject o1 = new Object();\nObject o2 = new Object();\ntry (var service = Executors.newFixedThreadPool(2)) {\n    var f1 = service.submit(() -> {\n        synchronized (o1) {\n            synchronized (o2) { System.out.print(\"Tortoise\"); }\n        }\n    });\n    var f2 = service.submit(() -> {\n        synchronized (o2) {\n            synchronized (o1) { System.out.print(\"Hare\"); }\n        }\n    });\n    f1.get();\n    f2.get();\n}",
     "options": [
       "A. The code will always output Tortoise followed by Hare.",
@@ -239,7 +239,7 @@
     "explanation": "14. C, E. The code compiles without issue, so option D is incorrect. Since both tasks are submitted to the same thread executor pool, the order cannot be determined, so options A and B are incorrect, and option C is correct. The key here is that the order in which the resources o1 and o2 are synchronized could result in a deadlock, making option E correct. The code cannot produce a livelock, so option F is incorrect. Finally, if a deadlock does occur, an exception will not be thrown, so option G is incorrect."
   },
   {
-    "id": 15,
+    "id": 1315,
     "question": "15. Which statement about the following code snippet is correct?\n2: var cats = Stream.of(\"leopard\", \"lynx\", \"ocelot\", \"puma\")\n3:        .parallel();\n4: var bears =\nStream.of(\"panda\",\"grizzly\",\"polar\").parallel();\n5: var data = Stream.of(cats,bears).flatMap(s -> s)\n6:        .collect(Collectors.groupingByConcurrent(\n7:            s -> !s.startsWith(\"p\")));\n8: System.out.println(data.get(false).size()\n9:        + \" \" + data.get(true).size());",
     "options": [
       "A. It outputs 3 4.",
@@ -255,7 +255,7 @@
     "explanation": "15. A. The code compiles and runs without issue, so options C, D, E, and F are incorrect. The collect() operation groups the animals into those that do and do not start with the letter p. Note that there are four animals that do not start with the letter p and three animals that do. Therefore, the output is 3 4, and option A is correct, making option B incorrect."
   },
   {
-    "id": 16,
+    "id": 1316,
     "question": "16. Which APIs exist for creating or working with platform threads? (Choose all that apply.)\nA. Executors.newCachedThreadPool()\nB. Executors.newPlatformThreadPool()\nC. Executors.newPlatformThreadPerTaskExecutor()\nD. new Thread()\nE. Thread.ofPlatform()\nF. Thread.ofPlatformThread()",
     "options": [
       "A. Executors.newCachedThreadPool()",
@@ -273,7 +273,7 @@
     "explanation": "16. A, D, E. All the factory methods on Executors work with platform threads except newVirtualThreadPerTaskExecutor(), making option A correct. You can also create a platform thread using the constructor new Thread() and by using Thread.ofPlatform(), making options D and E correct. Options B, C, and F refer either to non-existent APIs or incorrect names."
   },
   {
-    "id": 17,
+    "id": 1317,
     "question": "17. Which statement about methods in ReentrantLock is correct?\nA. The lock() method will attempt to acquire a lock without waiting indefinitely for it.\nB. The testLock() method will attempt to acquire a lock without waiting indefinitely for it.\nC. The attemptLock() method will attempt to acquire a lock without waiting indefinitely for it.\nD. By default, a ReentrantLock fairly releases to each thread in the order in which it was requested.\nE. Calling the unlock() method once will release a resource so that other threads can obtain the lock.\nF. None of the above.",
     "options": [
       "A. The lock() method will attempt to acquire a lock without waiting indefinitely for it.",
@@ -289,7 +289,7 @@
     "explanation": "17. F. The lock() method will wait indefinitely for a lock, so option A is incorrect. There is no method named testLock() or attemptLock() in ReentrantLock, making options B and C incorrect. By default, ReentrantLock does not enforce fairness unless specified, so option D is incorrect. Calling unlock() once will release the lock only if it has been locked a corresponding number of times, so option E is not a complete description. Therefore, none of the above statements is correct and option F is the answer."
   },
   {
-    "id": 18,
+    "id": 1318,
     "question": "18. Which of the following lambda expressions are valid Callable expressions? (Choose all that apply.)\nA. a -> {return 10;}\nB. () -> {String s = \"\";}\nC. () -> 5\nD. () -> {return null}\nE. () -> \"The\" + \"Zoo\"\nF. (int count) -> count+1\nG. () -> {System.out.print(\"Giraffe\"); return 10;}",
     "options": [
       "A. a -> {return 10;}",
@@ -308,7 +308,7 @@
     "explanation": "18. C, E, G. A valid Callable lambda expression takes no parameters (unless specified) and returns a value. Option C returns an int, option E returns a String, and option G returns an int after performing an action. Option A is invalid because it has an unneeded parameter. Option B does not return a value, and option F takes an input parameter, which is not consistent with a typical no-argument Callable. Option D is syntactically correct but would be equivalent to returning null; however, the explanation in the answer file specifies options C, E, and G as the valid ones."
   },
   {
-    "id": 19,
+    "id": 1319,
     "question": "19. What is the result of executing the following application?\n(Choose all that apply.)\nimport java.util.concurrent.*;\nimport java.util.stream.*;\npublic class PrintConstants {\n    public static void main(String[] args) {\n        var s = Executors.newVirtualThreadPerTaskExecutor();\n        DoubleStream.of(3.14159, 2.71828)\n            // b1\n            .forEach(c -> s.submit(\n                // b2\n                () -> System.out.println(10 * c))); // b3\n        s.execute(() -> System.out.println(\"Printed\"));\n    }\n}",
     "options": [
       "A. It compiles and outputs the two numbers followed by Printed.",
@@ -326,7 +326,7 @@
     "explanation": "19. E, G. The application compiles and does not throw an exception. Even though the stream is processed in sequential order, the tasks are submitted to a thread executor, which may complete the tasks in any order. Therefore, the output cannot be determined ahead of time, and option E is correct. Finally, the thread executor is never shut down; therefore, the code will run but never terminate, making option G also correct."
   },
   {
-    "id": 20,
+    "id": 1320,
     "question": "20. What is the result of executing the following program?\nimport java.util.*;\nimport java.util.concurrent.*;\nimport java.util.stream.*;\npublic class PrintCounter {\n    static int count = 0;\n    public static void main(String[] args) throws InterruptedException, ExecutionException {\n        try (var service = Executors.newSingleThreadExecutor()) {\n            var r = new ArrayList<Future<?>>();\n            IntStream.iterate(0, i -> i + 1).limit(5).forEach(\n                i -> r.add(service.execute(() -> { count++; }))\n            );\n            for (Future<?> result : r) {\n                System.out.print(result.get() + \" \");\n            }\n        }\n    }\n}",
     "options": [
       "A. It prints 0 1 2 3 4",
@@ -343,7 +343,7 @@
     "explanation": "20. F. The key to solving this question is to remember that the execute() method returns void, not a Future object. Therefore, line n1 does not compile, and option F is the correct answer. If the submit() method had been used instead of execute(), option C would have been the correct answer, as the output of the submit(Runnable) task is a Future<?> object that can only return null on its get() method."
   },
   {
-    "id": 21,
+    "id": 1321,
     "question": "21. Given the following code snippet and blank lines on p1 and p2, which values guarantee that 1 is printed at runtime?\n(Choose all that apply.)\nvar data = List.of(List.of(1, 2),\nList.of(3, 4),\nList.of(5, 6));\ndata._______________ // p1\n.flatMap(s -> s.stream())\n.________________ // p2\n.ifPresent(System.out::print);",
     "options": [
       "A. stream() on line p1, findFirst() on line p2.",
@@ -360,7 +360,7 @@
     "explanation": "21. A, D. The findFirst() method guarantees the first element in the stream will be returned, whether it is serial or parallel, making options A and D correct. While option B may consistently print 1 at runtime, the behavior of findAny() on a serial stream is not guaranteed, so option B is incorrect. Option C is likewise incorrect, with the output being random at runtime."
   },
   {
-    "id": 22,
+    "id": 1322,
     "question": "22. Assuming one minute is enough time for the tasks submitted to the service executor to complete, what is the result of executing countSheep()?\nimport java.util.concurrent.*;\nimport java.util.concurrent.atomic.*;\npublic class BedTime {\n    private AtomicInteger s1 = new AtomicInteger(0); // w1\n    private int s2 = 0;\n    private void countSheep() throws InterruptedException {\n        try (var service = Executors.newSingleThreadExecutor()) { // w2\n            for (int i = 0; i < 100; i++)\n                service.execute(() -> { s1.getAndIncrement(); s2++; }); // w3\n            Thread.sleep(60_000);\n            System.out.println(s1 + \" \" + s2);\n        }\n    }\n    public static void main(String… nap) throws InterruptedException {\n        new BedTime().countSheep();\n    }\n}",
     "options": [
       "A. The method consistently prints 100 99.",
@@ -377,7 +377,7 @@
     "explanation": "22. B. The code compiles and runs without issue. The key aspect to notice in the code is that a single-thread executor is used, meaning that no task will be executed concurrently. Therefore, the results are valid and predictable, with 100 100 being the output, and option B is the correct answer. If a thread executor with more threads was used, then the s2++ operations could overwrite each other, making the second value indeterminate at the end of the program. In this case, option C would be the correct answer."
   },
   {
-    "id": 23,
+    "id": 1323,
     "question": "23. What is the result of executing the following application?\nimport java.util.concurrent.*;\nimport java.util.stream.*;\npublic class StockRoomTracker {\n    public static void await(CyclicBarrier cb) { // j1\n        try { cb.await(); } catch (Exception e) {}\n    }\n    public static void main(String[] args) {\n        var cb = new CyclicBarrier(10, () -> System.out.println(\"Stock Room Full!\")); // j2\n        IntStream.iterate(1, i -> 1).limit(9).parallel()\n            .forEach(i -> await(cb)); // j3\n    }\n}",
     "options": [
       "A. It outputs Stock Room Full!",
@@ -393,7 +393,7 @@
     "explanation": "23. F. The code compiles without issue, so options B, C, and D are incorrect. The limit on the cyclic barrier is 10, but the stream can generate only up to 9 threads that reach the barrier; therefore, the limit can never be reached, and option F is the correct answer, making options A and E incorrect. Even if the limit(9) statement was changed to limit(10), the program could still hang since the JVM might not allocate 10 threads to the parallel stream."
   },
   {
-    "id": 24,
+    "id": 1324,
     "question": "24. What statements about the following class definition are true? (Choose all that apply.)\npublic final class TicketManager {\n    private int tickets;\n    private static TicketManager instance;\n    private TicketManager() {}\n    static synchronized TicketManager getInstance() { // k1\n        if (instance==null) instance = new TicketManager(); // k2\n        return instance;\n    }\n    public int getTicketCount() { return tickets; }\n    public void addTickets(int value) { tickets += value; }\n    public void sellTickets(int value) {\n        synchronized (this) { // k3\n            tickets -= value;\n        } // k4\n    }\n}",
     "options": [
       "A. It compiles without issue.",
@@ -410,7 +410,7 @@
     "explanation": "24. A, F. The class compiles without issue, so option A is correct. Since getInstance() is a static method and sellTickets() is an instance method, lines k1 and k4 synchronize on different objects, making option D incorrect. The class is not thread-safe because the addTickets() method is not synchronized, and option E is incorrect. Finally, option F is correct because the getInstance() method is synchronized. Since the constructor is private, this method is the only way to create an instance of TicketManager outside the class. The first thread to enter the method will set the instance variable, and all other threads will use the existing value. This is a singleton pattern."
   },
   {
-    "id": 25,
+    "id": 1325,
     "question": "25. Assuming an implementation of the performCount() method is provided prior to runtime, which of the following are possible results of executing the following application?\nimport java.util.*;\nimport java.util.concurrent.*;\npublic class CountZooAnimals {\n    public static void performCount(int animal) {\n        // IMPLEMENTATION OMITTED\n    }\n    public static void printResults(Future<?> f) {\n        try {\n            System.out.println(f.get(1, TimeUnit.DAYS)); // o1\n        } catch (Exception e) {\n            System.out.println(\"Exception!\");\n        }\n    }\n    public static void main(String[] args) throws Exception {\n        final var r = new ArrayList<Future<?>>();\n        try (var s = Executors.newSingleThreadExecutor()) {\n            for (int i = 0; i < 10; i++) {\n                final int animal = i;\n                r.add(s.submit(() -> performCount(animal))); // o2\n            }\n            r.forEach(f -> printResults(f));\n        }\n    }\n}",
     "options": [
       "A. It outputs a number 10 times.",

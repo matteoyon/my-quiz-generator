@@ -22,6 +22,9 @@ func RunQuiz(questions []Question, quizLength int) {
 	}
 
 	for i, q := range instanceQuestions {
+
+		fmt.Println("\n##############################################################################")
+		fmt.Println("\nID: ", q.ID)
 		fmt.Printf("\nQuestion %d: %s\n", i+1, q.Question)
 
 		if q.Code != "" {

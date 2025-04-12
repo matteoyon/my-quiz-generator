@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 1201,
     "question": "1. Which statement is true of the following module?\n|---zoo\n|-- staff\n|-- Vet.javaA. The directory structure shown is a valid module.\nB. The directory structure would be a valid module if\nmodule.java were added directly underneath\nzoo/staff.\nC. The directory structure would be a valid module if\nmodule.java were added directly underneath zoo.\nD. The directory structure would be a valid module if\nmodule-info.java were added directly underneath\nzoo/staff.\nE. The directory structure would be a valid module if\nmodule-info.java were added directly underneath zoo.\nF. None of these changes would make this directory\nstructure a valid module.",
     "options": [
       "A. The directory structure shown is a valid module.",
@@ -16,7 +16,7 @@
     "explanation": "1. E. Modules are required to have a module-info.java file at the root directory of the module. Option E matches this requirement."
   },
   {
-    "id": 2,
+    "id": 1202,
     "question": "2. Suppose module puppy depends on module dog and\nmodule dog depends on module animal. Fill in the blank\nso that code in module dog can access the\nanimal.behavior package in module animal.\nmodule animal {\n_________ animal.behavior;\n}\nA. export\nB. exports\nC. require\nD. requires\nE. require transitive\nF. requires transitive\nG. None of the above",
     "options": [
       "A. export",
@@ -33,7 +33,7 @@
     "explanation": "2. B. Options A, C, and E are incorrect because they refer to directives that don’t exist. The exports directive is used when allowing a package to be called by code outside of the module, making option B the correct answer. Notice that options D and F are incorrect because requires is the wrong keyword to use."
   },
   {
-    "id": 3,
+    "id": 1203,
     "question": "3. Fill in the blanks so this command to run the program\nis correct:java\n_________ modules\n_________ zoo.animal.talks/zoo/animal/talks/Peacocks\nA. -d and -m\nB. -d and –p\nC. -m and -d\nD. -m and -p\nE. -p and -d\nF. -p and -m\nG. None of the above",
     "options": [
       "A. -d and -m",
@@ -50,7 +50,7 @@
     "explanation": "3. G. The -p or --module-path option is used to specify the location of the modules. The -m or --module option is used to specify the module and class name. However, running a program requires the package name to be specified with periods (.) instead of slashes. Since the command is incorrect, option G is correct."
   },
   {
-    "id": 4,
+    "id": 1204,
     "question": "4. Which of the following pairs make up a service?\nA. Consumer and service locator\nB. Consumer and service provider interface\nC. Service locator and service provider\nD. Service locator and service provider interface\nE. Service provider and service provider interface",
     "options": [
       "A. Consumer and service locator",
@@ -65,7 +65,7 @@
     "explanation": "4. D. A service consists of the service provider interface and logic to look up implementations using a service locator. This makes option D correct. Make sure you know that the service provider itself is the implementation, which is not considered part of the service."
   },
   {
-    "id": 5,
+    "id": 1205,
     "question": "5. A(n) _____________ module is on the classpath while a(n)\n_____________ module is on the module path. (Choose all\nthat apply.)\nA. automatic, named\nB. automatic, unnamed\nC. named, automatic\nD. named, unnamed\nE. unnamed, automatic\nF. unnamed, named\nG. None of the above",
     "options": [
       "A. automatic, named",
@@ -83,7 +83,7 @@
     "explanation": "5. E, F. Automatic modules are on the module path but do not have a module-info.java file. Named modules are on the module path and do have a module-info.java. Unnamed modules are on the classpath. Therefore, options E and F are correct."
   },
   {
-    "id": 6,
+    "id": 1206,
     "question": "6. Which of the following statements are true in a module-\ninfo.java file? (Choose all that apply.)\nA. The opens directive allows the use of reflection.\nB. The opens directive declares that an API is called.\nC. The use directive allows the use of reflection.\nD. The use directive declares that an API is called.\nE. The uses directive allows the use of reflection.\nF. The uses directive declares that an API is called.",
     "options": [
       "A. The opens directive allows the use of reflection.",
@@ -100,7 +100,7 @@
     "explanation": "6. A, F. Options C and D are incorrect because there is no use directive. Options A and F are correct because opens is for reflection and uses declares that an API consumes a service."
   },
   {
-    "id": 7,
+    "id": 1207,
     "question": "7. An automatic module name is generated if one is not\nsupplied. Which of the following JAR filenames and\ngenerated automatic module name pairs are correct?\n(Choose all that apply.)\nA. emily-1.0.0.jar and emily\nB. emily-1.0.0-SNAPSHOT.jar and emily\nC. emily_the_cat-1.0.0.jar and emily_the_cat\nD. emily_the_cat-1.0.0.jar and emily-the-cat\nE. emily.$.jar and emily\nF. emily.$.jar and emily.\nG. emily.$.jar and emily..",
     "options": [
       "A. emily-1.0.0.jar and emily",
@@ -119,7 +119,7 @@
     "explanation": "7. A, B, E. Any version information at the end of the JAR filename is removed, making options A and B correct. Underscores (_) are turned into dots (.), making options C and D incorrect. Other special characters like a dollar sign ($) are also turned into dots. However, adjacent dots are merged, and leading/trailing dots are removed. Therefore, option E is also correct."
   },
   {
-    "id": 8,
+    "id": 1208,
     "question": "8. Which of the following statements are true? (Choose all\nthat apply.)\nA. Modules with cyclic dependencies will not compile.\nB. Packages with a cyclic dependency will not\ncompile.\nC. A cyclic dependency always involves exactly two\nmodules.\nD. A cyclic dependency always involves at least two\nrequires statements.\nE. An unnamed module can be involved in a cyclic\ndependency with an automatic module.",
     "options": [
       "A. Modules with cyclic dependencies will not compile.",
@@ -135,7 +135,7 @@
     "explanation": "8. A, D. A cyclic dependency is when a module graph forms a circle. Option A is correct because the Java Platform Module System does not allow cyclic dependencies between modules. No such restriction exists for packages, making option B incorrect. A cyclic dependency can involve two or more modules that require each other, making option D correct, while option C is incorrect. Finally, option E is incorrect because unnamed modules cannot be referenced from an automatic module."
   },
   {
-    "id": 9,
+    "id": 1209,
     "question": "9. Suppose you are creating a service provider that\ncontains the following class. Which line of code needs\nto be in your module-info.java?\npackage dragon;\nimport magic.*;\npublic class Dragon implements Magic {\npublic String getPower() {\nreturn \"breathe fire\";\n}\n}\nA. provides dragon.Dragon by magic.Magic;\nB. provides dragon.Dragon using magic.Magic;\nC. provides dragon.Dragon with magic.Magic;\nD. provides magic.Magic by dragon.Dragon;\nE. provides magic.Magic using dragon.Dragon;\nF. provides magic.Magic with dragon.Dragon;",
     "options": [
       "A. provides dragon.Dragon by magic.Magic;",
@@ -151,7 +151,7 @@
     "explanation": "9. F. The provides directive takes the interface name first and the implementing class name second and also uses with. Only option F meets these two criteria, making it the correct answer."
   },
   {
-    "id": 10,
+    "id": 1210,
     "question": "10. What is true of a module containing a file named module-\ninfo.java with the following contents? (Choose all that\napply.)\nmodule com.food.supplier {}\nA. All packages inside the module are automatically\nexported.\nB. No packages inside the module are automatically\nexported.\nC. A main method inside the module can be run.\nD. A main method inside the module cannot be run\nsince the class is not exposed.\nE. The module-info.java file contains a compiler error.\nF. The module-info.java filename is incorrect.",
     "options": [
       "A. All packages inside the module are automatically exported.",
@@ -168,7 +168,7 @@
     "explanation": "10. B, C. Packages inside a module are not exported by default, making option B correct and option A incorrect. Exporting is necessary for other code to use the packages; it is not necessary to call the main() method at the command line, making option C correct and option D incorrect. The module-info.java file has the correct name and compiles, making options E and F incorrect."
   },
   {
-    "id": 1,
+    "id": 1201,
     "question": "1. Which statement is true of the following module?\n|---zoo\n|-- staff\n|-- Vet.javaA. The directory structure shown is a valid module.\nB. The directory structure would be a valid module if\nmodule.java were added directly underneath\nzoo/staff.\nC. The directory structure would be a valid module if\nmodule.java were added directly underneath zoo.\nD. The directory structure would be a valid module if\nmodule-info.java were added directly underneath\nzoo/staff.\nE. The directory structure would be a valid module if\nmodule-info.java were added directly underneath zoo.\nF. None of these changes would make this directory\nstructure a valid module.",
     "options": [
       "A. The directory structure shown is a valid module.",
@@ -184,7 +184,7 @@
     "explanation": "1. E. Modules are required to have a module-info.java file at the root directory of the module. Option E matches this requirement."
   },
   {
-    "id": 2,
+    "id": 1202,
     "question": "2. Suppose module puppy depends on module dog and\nmodule dog depends on module animal. Fill in the blank\nso that code in module dog can access the\nanimal.behavior package in module animal.\nmodule animal {\n_________ animal.behavior;\n}\nA. export\nB. exports\nC. require\nD. requires\nE. require transitive\nF. requires transitive\nG. None of the above",
     "options": [
       "A. export",
@@ -201,7 +201,7 @@
     "explanation": "2. B. Options A, C, and E are incorrect because they refer to directives that don’t exist. The exports directive is used when allowing a package to be called by code outside of the module, making option B the correct answer. Notice that options D and F are incorrect because requires is the wrong keyword to use."
   },
   {
-    "id": 3,
+    "id": 1203,
     "question": "3. Fill in the blanks so this command to run the program\nis correct:java\n_________ modules\n_________ zoo.animal.talks/zoo/animal/talks/Peacocks\nA. -d and -m\nB. -d and –p\nC. -m and -d\nD. -m and -p\nE. -p and -d\nF. -p and -m\nG. None of the above",
     "options": [
       "A. -d and -m",
@@ -218,7 +218,7 @@
     "explanation": "3. G. The -p or --module-path option is used to specify the location of the modules. The -m or --module option is used to specify the module and class name. However, running a program requires the package name to be specified with periods (.) instead of slashes. Since the command is incorrect, option G is correct."
   },
   {
-    "id": 4,
+    "id": 1204,
     "question": "4. Which of the following pairs make up a service?\nA. Consumer and service locator\nB. Consumer and service provider interface\nC. Service locator and service provider\nD. Service locator and service provider interface\nE. Service provider and service provider interface",
     "options": [
       "A. Consumer and service locator",
@@ -233,7 +233,7 @@
     "explanation": "4. D. A service consists of the service provider interface and logic to look up implementations using a service locator. This makes option D correct. Make sure you know that the service provider itself is the implementation, which is not considered part of the service."
   },
   {
-    "id": 5,
+    "id": 1205,
     "question": "5. A(n) _____________ module is on the classpath while a(n)\n_____________ module is on the module path. (Choose all\nthat apply.)\nA. automatic, named\nB. automatic, unnamed\nC. named, automatic\nD. named, unnamed\nE. unnamed, automatic\nF. unnamed, named\nG. None of the above",
     "options": [
       "A. automatic, named",
@@ -251,7 +251,7 @@
     "explanation": "5. E, F. Automatic modules are on the module path but do not have a module-info.java file. Named modules are on the module path and do have a module-info.java. Unnamed modules are on the classpath. Therefore, options E and F are correct."
   },
   {
-    "id": 6,
+    "id": 1206,
     "question": "6. Which of the following statements are true in a module-\ninfo.java file? (Choose all that apply.)\nA. The opens directive allows the use of reflection.\nB. The opens directive declares that an API is called.\nC. The use directive allows the use of reflection.\nD. The use directive declares that an API is called.\nE. The uses directive allows the use of reflection.\nF. The uses directive declares that an API is called.",
     "options": [
       "A. The opens directive allows the use of reflection.",
@@ -268,7 +268,7 @@
     "explanation": "6. A, F. Options C and D are incorrect because there is no use directive. Options A and F are correct because opens is for reflection and uses declares that an API consumes a service."
   },
   {
-    "id": 7,
+    "id": 1207,
     "question": "7. An automatic module name is generated if one is not\nsupplied. Which of the following JAR filenames and\ngenerated automatic module name pairs are correct?\n(Choose all that apply.)\nA. emily-1.0.0.jar and emily\nB. emily-1.0.0-SNAPSHOT.jar and emily\nC. emily_the_cat-1.0.0.jar and emily_the_cat\nD. emily_the_cat-1.0.0.jar and emily-the-cat\nE. emily.$.jar and emily\nF. emily.$.jar and emily.\nG. emily.$.jar and emily..",
     "options": [
       "A. emily-1.0.0.jar and emily",
@@ -287,7 +287,7 @@
     "explanation": "7. A, B, E. Any version information at the end of the JAR filename is removed, making options A and B correct. Underscores (_) are turned into dots (.), making options C and D incorrect. Other special characters like a dollar sign ($) are also turned into dots. However, adjacent dots are merged, and leading/trailing dots are removed. Therefore, option E is also correct."
   },
   {
-    "id": 8,
+    "id": 1208,
     "question": "8. Which of the following statements are true? (Choose all\nthat apply.)\nA. Modules with cyclic dependencies will not compile.\nB. Packages with a cyclic dependency will not\ncompile.\nC. A cyclic dependency always involves exactly two\nmodules.\nD. A cyclic dependency always involves at least two\nrequires statements.\nE. An unnamed module can be involved in a cyclic\ndependency with an automatic module.",
     "options": [
       "A. Modules with cyclic dependencies will not compile.",
@@ -303,7 +303,7 @@
     "explanation": "8. A, D. A cyclic dependency is when a module graph forms a circle. Option A is correct because the Java Platform Module System does not allow cyclic dependencies between modules. No such restriction exists for packages, making option B incorrect. A cyclic dependency can involve two or more modules that require each other, making option D correct, while option C is incorrect. Finally, option E is incorrect because unnamed modules cannot be referenced from an automatic module."
   },
   {
-    "id": 9,
+    "id": 1209,
     "question": "9. Suppose you are creating a service provider that\ncontains the following class. Which line of code needs\nto be in your module-info.java?\npackage dragon;\nimport magic.*;\npublic class Dragon implements Magic {\npublic String getPower() {\nreturn \"breathe fire\";\n}\n}\nA. provides dragon.Dragon by magic.Magic;\nB. provides dragon.Dragon using magic.Magic;\nC. provides dragon.Dragon with magic.Magic;\nD. provides magic.Magic by dragon.Dragon;\nE. provides magic.Magic using dragon.Dragon;\nF. provides magic.Magic with dragon.Dragon;",
     "options": [
       "A. provides dragon.Dragon by magic.Magic;",
@@ -319,7 +319,7 @@
     "explanation": "9. F. The provides directive takes the interface name first and the implementing class name second and also uses with. Only option F meets these two criteria, making it the correct answer."
   },
   {
-    "id": 10,
+    "id": 1210,
     "question": "10. What is true of a module containing a file named module-\ninfo.java with the following contents? (Choose all that\napply.)\nmodule com.food.supplier {}\nA. All packages inside the module are automatically\nexported.\nB. No packages inside the module are automatically\nexported.\nC. A main method inside the module can be run.\nD. A main method inside the module cannot be run\nsince the class is not exposed.\nE. The module-info.java file contains a compiler error.\nF. The module-info.java filename is incorrect.",
     "options": [
       "A. All packages inside the module are automatically exported.",
@@ -336,7 +336,7 @@
     "explanation": "10. B, C. Packages inside a module are not exported by default, making option B correct and option A incorrect. Exporting is necessary for other code to use the packages; it is not necessary to call the main() method at the command line, making option C correct and option D incorrect. The module-info.java file has the correct name and compiles, making options E and F incorrect."
   },
   {
-    "id": 11,
+    "id": 1211,
     "question": "11. Suppose module puppy depends on module dog and\nmodule dog depends on module animal. Which lines allow\nmodule puppy to access the animal.behavior package in\nmodule animal? (Choose all that apply.)\nmodule animal {\nexports animal.behavior;\n}\nmodule dog {\n_____________ animal; // line S\n}\nmodule puppy {\n_____________ dog;\n // line T\n}",
     "options": [
       "A. require on line S",
@@ -356,7 +356,7 @@
     "explanation": "11. D, G, H. Options A, B, E, and F are incorrect because they refer to directives that don’t exist. The requires transitive directive is used when specifying a module to be used by the requesting module and any other modules that use the requesting module. Therefore, dog needs to specify the transitive relationship, and option G is correct. The module puppy just needs requires dog, and it gets the transitive dependencies, making option D correct. However, requires transitive does everything requires does and more, which makes option H the final correct answer."
   },
   {
-    "id": 12,
+    "id": 1212,
     "question": "12. Which of the following modules are provided by the JDK? (Choose all that apply.)",
     "options": [
       "A. java.base",
@@ -376,7 +376,7 @@
     "explanation": "12. A, B, C, F. Option D is incorrect because it is a package name rather than a module name. Option E is incorrect because java.base is the module name, not jdk.base. Option G is wrong because we made it up. Options A, B, C, and F are correct."
   },
   {
-    "id": 13,
+    "id": 1213,
     "question": "13. Which of the following compiles and is equivalent to this loop?\nList<Unicorn> all = new ArrayList<>();\nfor (Unicorn current : ServiceLoader.load(Unicorn.class))\n    all.add(current);",
     "options": [
       "A. List<Unicorn> all = ServiceLoader.load(Unicorn.class).getStream().toList();",
@@ -391,7 +391,7 @@
     "explanation": "13. D. There is no getStream() method on a ServiceLoader, making options A and C incorrect. Option B does not compile because the stream() method returns a list of Provider interfaces and needs to be converted to the Unicorn interface we are interested in. Therefore, option D is correct."
   },
   {
-    "id": 14,
+    "id": 1214,
     "question": "14. Which of the following is a legal command to run a modular program where n is the module name and c is the fully qualified class name?",
     "options": [
       "A. java --module-path x -m n.c",
@@ -408,7 +408,7 @@
     "explanation": "14. C. The -p option is a shorter form of --module-path. Since the same option cannot be specified twice, options B, D, and F are incorrect. The module name and class name are separated with a slash, making option C the answer. Note that x-x is legal because the module path is a folder name, so dashes are allowed."
   },
   {
-    "id": 15,
+    "id": 1215,
     "question": "15. For a top-down migration, all modules other than named modules are _____________ modules and are on the _____________.",
     "options": [
       "A. automatic, classpath",
@@ -423,7 +423,7 @@
     "explanation": "15. B. A top-down migration strategy first places all JARs on the module path. Then it migrates the top-level module to be a named module, leaving the other modules as automatic modules. Option B is correct as it matches both of those characteristics."
   },
   {
-    "id": 16,
+    "id": 1216,
     "question": "16. Suppose you have separate modules for a service provider interface, service provider, service locator, and consumer. If you add a second service provider module, how many of the existing modules do you need to recompile?",
     "options": [
       "A. Zero",
@@ -438,7 +438,7 @@
     "explanation": "16. A. Since this is a new module, you need to compile it. However, none of the existing modules needs to be recompiled, making option A correct. The service locator will see the new service provider simply by having that new service provider on the module path."
   },
   {
-    "id": 17,
+    "id": 1217,
     "question": "17. Suppose we have a JAR file named cat-1.2.3-RC1.jar, and Automatic-Module-Name in the MANIFEST.MF is set to dog. What should an unnamed module referencing this automatic module include in module-info.java?",
     "options": [
       "A. requires cat;",
@@ -453,7 +453,7 @@
     "explanation": "17. E. Trick question! An unnamed module doesn’t use a module-info.java file. Therefore, option E is correct. An unnamed module can access an automatic module. The unnamed module would simply treat the automatic module as a regular JAR without involving the module-info.java file."
   },
   {
-    "id": 18,
+    "id": 1218,
     "question": "18. Two commands create artifacts that include smaller versions of the JDK. Which are used to create an .exe file and a directory, respectively?",
     "options": [
       "A. jimage and jlink",
@@ -469,7 +469,7 @@
     "explanation": "18. F. The jpackage command creates self-contained application such as an .exe. The jlink command creates a directory with a smaller Java runtime containing just what is needed. The jimage command is used to inspect a Java image file. Therefore, option F is correct."
   },
   {
-    "id": 19,
+    "id": 1219,
     "question": "19. Which is a true statement about the following module?\nclass dragon {\nexports com.dragon.fire;\nexports com.dragon.scales to castle;\n}",
     "options": [
       "A. All modules can reference the com.dragon.fire package.",
@@ -484,7 +484,7 @@
     "explanation": "19. E. There is a trick here. A module definition uses the keyword module rather than class. Since the code does not compile, option E is correct. If the code did compile, options A and D would be correct."
   },
   {
-    "id": 20,
+    "id": 1220,
     "question": "20. Which would you expect to see when describing any module?",
     "options": [
       "A. requires java.base mandated",
@@ -501,7 +501,7 @@
     "explanation": "20. A. When running java with the -d option, all the required modules are listed. Additionally, the java.base module is listed since it is included automatically. The line ends with mandated, making option A correct. The java.lang is a trick since it is a package that is imported by default in a class rather than a module."
   },
   {
-    "id": 21,
+    "id": 1221,
     "question": "21. Suppose you have separate modules for a service provider interface, service provider, service locator, and consumer. Which module(s) need to specify a requires directive on the service provider?",
     "options": [
       "A. Service locator",
@@ -519,7 +519,7 @@
     "explanation": "21. H. This question is tricky. The service locator must have a uses directive, but that is on the service provider interface. No modules need to specify requires on the service provider since that is the implementation. Since none of the options are correct, option H is the answer."
   },
   {
-    "id": 22,
+    "id": 1222,
     "question": "22. Which are true statements? (Choose all that apply.)\nA. An automatic module exports all packages to named modules.\nB. An automatic module exports only the specified packages to named modules.\nC. An automatic module exports no packages to named modules.\nD. An unnamed module exports only the named packages to named modules.\nE. An unnamed module exports all packages to named modules.\nF. An unnamed module exports no packages to named modules.",
     "options": [
       "A. An automatic module exports all packages to named modules.",
@@ -536,7 +536,7 @@
     "explanation": "22. A, F. An automatic module exports all packages, making option A correct. An unnamed module is not available to any modules on the module path. Therefore, it doesn’t export any packages, and option F is correct."
   },
   {
-    "id": 23,
+    "id": 1223,
     "question": "23. Which is the first line to contain a compiler error?\n1: module snake {\n2:     exports com.snake.tail;\n3:     exports com.snake.fangs to bird;\n4:     requires skin;\n5:     requires transitive skin;\n6: }\nA. Line 1.\nB. Line 2.\nC. Line 3.\nD. Line 4.\nE. Line 5.\nF. The code does not contain any compiler errors.",
     "options": [
       "A. Line 1.",
@@ -552,7 +552,7 @@
     "explanation": "23. E. The module name is valid, as are the exports statements. Lines 4 and 5 are tricky because each is valid independently. However, the same module name is not allowed to be used in two requires statements. The second one fails to compile on line 5, making option E the answer."
   },
   {
-    "id": 24,
+    "id": 1224,
     "question": "24. Which is a true statement about a package in a JAR on the classpath containing a module-info.java file?\nA. It is possible to make the package available to all other modules on the classpath.\nB. It is possible to make the package available to all other modules on the module path.\nC. It is possible to make the package available to exactly one other specific module on the classpath.\nD. It is possible to make the package available to exactly one other specific module on the module path.\nE. It is possible to make sure the package is not available to any other modules on the classpath.",
     "options": [
       "A. It is possible to make the package available to all other modules on the classpath.",
@@ -567,7 +567,7 @@
     "explanation": "24. A. Since the JAR is on the classpath, it is treated as a regular unnamed module even though it has a module-info.java file inside. Remember from learning about top-down migration that modules on the module path are not allowed to refer to the classpath, making options B and D incorrect. The classpath does not have a facility to restrict packages, making option A correct and options C and E incorrect."
   },
   {
-    "id": 25,
+    "id": 1225,
     "question": "25. Suppose you have separate modules for a service provider interface, service provider, service locator, and consumer. Which statements are true about the directives you need to specify? (Choose all that apply.)\nA. The consumer must use the requires directive.\nB. The consumer must use the uses directive.\nC. The service locator must use the requires directive.\nD. The service locator must use the uses directive.\nE. None of the above.",
     "options": [
       "A. The consumer must use the requires directive.",
