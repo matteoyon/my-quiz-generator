@@ -47,6 +47,10 @@ func RunQuiz(questions []Question, quizLength int) {
 			return questionAnswers[x] < questionAnswers[y]
 		})
 
+		for _, q := range questionAnswers {
+			q = strings.TrimSpace(q)
+		}
+
 		correct := true
 		if len(myAnswers) == len(questionAnswers) {
 			for j, ans := range questionAnswers {
