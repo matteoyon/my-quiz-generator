@@ -23,7 +23,7 @@ func main() {
 	var allQuestions []quiz.Question
 
 	if os.Args[2] == "-a" {
-		if len(os.Args) < 3 {
+		if len(os.Args) < 4 {
 			log.Fatalf("Please specify a folder after the -a flag")
 		}
 		allQuestions = loadAllQuestionsFromFolder(os.Args[3])
